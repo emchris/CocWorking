@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ellissi_azzurra"
+        android:layout_width="461dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="420dp"
+        android:layout_marginLeft="420dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/semelissi_azzurra_promo_land_2" />
+
+    <include
+        android:id="@+id/toolbar_orange"
+        layout="@layout/toolbar_orange" />
+
+    <ImageView
+        android:id="@+id/ellissi_arancione"
+        android:layout_width="587dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_bacheca"
+        app:layout_constraintHorizontal_bias="0.863"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_orange"
+        app:srcCompat="@drawable/semelissi_arancione_convenzioni_land_1" />
+
+    <TextView
+        android:id="@+id/text_convenzioni"
+        android:layout_width="168dp"
+        android:layout_height="50dp"
+        android:text="@string/title_convenzioni"
+        android:textColor="@color/colorPrimary"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/amatic_sc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
+
+    <TextView
+        android:id="@+id/text_bacheca"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:clickable="true"
+        android:text="@string/title_promo"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/amatic_sc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_bacheca">Showcase</string>
+    <string name="button_vetrina">Windows</string>
+    <string name="seleziona">Select the plant:</string>
+    <string name="title_piantina">PLAN</string>
+    <string name="button_piantina">Plan</string>
+    <string name="button_eventi">Events</string>
+    <string name="about_piantina">In this section you can view our offices and check if there are still places available. Once selected you will have the opportunity to book it and, if within 3 days you will pass by the office, the station will be yours.</string>
+    <string name="title_chi_siamo">ABOUT US</string>
+    <string name="chi_siamo">We offer you spaces that are not only functional, but also beautiful to live in, that fill your working days with colors, shapes and ideas. Environments that facilitate exchange, sharing, friendship, through which one can feel a little like home. In addition, they are all personalized by Ugo Nespolo.</string>
+    <string name="title_contatti">CONTACTS</string>
+    <string name="button_ufficio_1">Office 1</string>
+    <string name="button_ufficio_2">Office 2</string>
+    <string name="libero">Free</string>
+    <string name="reception">Reception and relax room</string>
+    <string name="button_sala_grande">Big Room</string>
+    <string name="button_sala_riunioni">Meeting Room</string>
+    <string name="occupato">Busy</string>
+    <string name="title_primo_piano">FIRST PLAN</string>
+    <string name="button_mensa">Canteen</string>
+    <string name="button_ufficio_3">Office 3</string>
+    <string name="button_ufficio_4">Office 4</string>
+    <string name="title_secondo_piano">SECOND PLAN</string>
+    <string name="title_collegamenti">Links</string>
+    <string name="title_dati_e_info">About</string>
+    <string name="title_professione">Profession</string>
+    <string name="title_profilo">PROFILE</string>
+    <string name="title_interessi">Interest</string>
+    <string name="title_sala_riunione">MEETING ROOM</string>
+    <string name="title_convenzioni">CONVENTIONS</string>
+    <string name="title_eventi">EVENTS</string>
+    <string name="title_promo">PROMO</string>
+    <string name="title_bacheca">BOARD</string>
+    <string name="title_promozioni">PROMOTIONS</string>
+</resources>

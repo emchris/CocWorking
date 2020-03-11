@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Cocò Working</string>
+    <string name="about_piantina">In questa sezione potrai visionare i nostri uffici e controllare se ci sono ancora postazioni disponibili. Una volta selezionata avrai la possibilità di prenotarla e, se entro 3 giorni passerai in ufficio da noi, la postazione sarà tua.</string>
+    <string name="button_bacheca">Bacheca</string>
+    <string name="button_eventi">Eventi</string>
+    <string name="button_piantina">Piantina</string>
+    <string name="button_vetrina">Vetrina</string>
+    <string name="seleziona">Seleziona il piano da ispezionare:</string>
+    <string name="title_piantina">PIANTINA</string>
+    <string name="title_chi_siamo">CHI SIAMO</string>
+    <string name="chi_siamo">Ti offriamo spazi che non sono solo funzionali, ma anche belli da vivere, che riempiono le tue giornate lavorative con colori, forme e idee. Ambienti che facilitano lo scambio, la condivisione, amicizia, attraverso cui ci si può sentire come a casa. Inoltre, sono tutti personalizzati da Ugo Nespolo.</string>
+    <string name="title_contatti">CONTATTI</string>
+    <string name="email" translatable="false">reception@cocoworking.it</string>
+    <string name="telefono" translatable="false">0112458501</string>
+    <string name="cellulare" translatable="false">3346170959</string>
+    <string name="web" translatable="false">https://www.cocoworking.it/</string>
+    <string name="indirizzo" translatable="false">Corso Galileo Ferraris, 22 bis, 10121 Torino TO</string>
+    <string name="title_primo_piano">PRIMO PIANO</string>
+    <string name="title_secondo_piano">SECONDO PIANO</string>
+    <string name="button_open_space" translatable="false">Open Space</string>
+    <string name="button_sala_grande">Sala Grande</string>
+    <string name="reception">Reception e Sala Relax</string>
+    <string name="button_sala_riunioni">Sala Riunioni</string>
+    <string name="button_mensa">Mensa</string>
+    <string name="button_ufficio_1">Ufficio 1</string>
+    <string name="button_ufficio_2">Ufficio 2</string>
+    <string name="button_ufficio_3">Ufficio 3</string>
+    <string name="button_ufficio_4">Ufficio 4</string>
+    <string name="libero">Sala libera</string>
+    <string name="occupato">Sala occupata</string>
+    <string name="title_profilo">PROFILO</string>
+    <string name="title_dati_e_info">Dati e Info</string>
+    <string name="title_professione">Professione</string>
+    <string name="title_collegamenti">Collegamenti</string>
+    <string name="title_interessi">Interessi</string>
+    <string name="title_sala_riunione">SALA RIUNIONE</string>
+    <string name="title_convenzioni">CONVENZIONI</string>
+    <string name="title_promo">PROMO</string>
+    <string name="title_promozioni">PROMOZIONI</string>
+    <string name="title_bacheca">BACHECA</string>
+    <string name="title_eventi">EVENTI</string>
+
+
+</resources>

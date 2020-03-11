@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/icon_home_white"
+        android:title="Home"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/allarm"
+        android:icon="@drawable/icon_notification_white"
+        android:title="Notifiche"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/account"
+        android:title="Account"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/setting"
+        android:title="Impostazioni"
+        app:showAsAction="never" />
+
+
+
+
+
+
+
+</menu>
