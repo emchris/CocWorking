@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity: AppCompatActivity() {
 
+    
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
