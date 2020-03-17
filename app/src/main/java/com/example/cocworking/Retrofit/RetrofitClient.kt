@@ -1,4 +1,4 @@
-package Retrofit
+package com.example.cocworking.Retrofit
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -8,11 +8,11 @@ object RetrofitClient {
     private var instance: Retrofit?=null
 
     fun getInstance(): Retrofit {
-        if(instance==null)
+        if(instance ==null)
             instance = Retrofit.Builder().baseUrl("http://10.0.2.2:3000/") //Localhost will be changed in 10.0.2.2 in Emulator
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
-        return instance !!
+        return instance!!
     }
 }

@@ -7,15 +7,31 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cocworking.Retrofit.IMyService
+import com.example.cocworking.Retrofit.RetrofitClient
 
 class LoginActivity: AppCompatActivity() {
 
-    
+    /*lateinit var iMyService = IMyService:IMyService
+    internal var compositeDisposable = compositeDisposable()
+
+    override fun onStop(){
+        compositeDisposable.clear()
+        super.onStop()
+    }*/
+
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setSupportActionBar(findViewById(R.id.toolbar_white))
+
+        //Init API
+        /*val retrofit = RetrofitClient.getInstance()
+        iMyService = retrofit.create(IMyService::class.java)*/
+
+        //
 
     }
 
