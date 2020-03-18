@@ -57,23 +57,43 @@
 
     <Button
         android:id="@+id/Login"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:background="#FFFFFF"
         android:fontFamily="@font/montserrat"
         android:text="Login"
         android:textColor="#FFFFFF"
         app:backgroundTint="#8500BCD4"
+        android:background = "@drawable/roundedbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PasswordLogin"
         app:layout_constraintVertical_bias="0.034" />
+
+    <Button
+        android:id="@+id/CreateAccount"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Create Account"
+        android:background = "@drawable/roundedbutton"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8500BCD4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Login"
+        app:layout_constraintVertical_bias="0.072" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
