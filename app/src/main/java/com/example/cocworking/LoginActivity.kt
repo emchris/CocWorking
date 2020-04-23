@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
+import com.example.cocworking.Retrofit.DefaultResponse
 import com.example.cocworking.Retrofit.IMyService //Retrofit è una libreria per gestire le richieste http in applicazioni android
 import com.example.cocworking.Retrofit.RetrofitClient
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
@@ -28,10 +29,10 @@ import retrofit2.Response
 class LoginActivity: AppCompatActivity() {
 
     lateinit var iMyService : IMyService //creo variabile di tipo IMyService (interfaccia creata da me)
-    internal var compositeDisposable = CompositeDisposable()
+    //internal var compositeDisposable = CompositeDisposable()
 
     override fun onStop(){
-        compositeDisposable.clear()
+       // compositeDisposable.clear()
         super.onStop()
     }
 
@@ -91,9 +92,9 @@ class LoginActivity: AppCompatActivity() {
 
     private fun registerUser(email: String, name: String, password: String) {
 
-        iMyService.registerUser(email, name, password).enqueue(object : Callback<String>{
+        iMyService.registerUser(email, name, password).enqueue(object : Callback<String>{ //enqueue è un metodo che serve per lanciare la Call
             override fun onFailure(call: Call<String>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(this@LoginActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
             }
 
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -125,13 +126,27 @@ class LoginActivity: AppCompatActivity() {
             return;
         }
 
-        iMyService.loginUser(email, password).enqueue(object : Callback<String>{
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        iMyService.loginUser(email, password).enqueue(object : Callback<DefaultResponse>{
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                Toast.makeText(this@LoginActivity, "Error", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                Toast.makeText(this@LoginActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+
+                Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
+
+                if (null != response.body()?.flag) {
+                    Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
+                    val key = "IntentFlag"
+                    val value = 1
+                    val menu = Intent(applicationContext,MainActivity::class.java)
+                    val logged = Bundle()
+                    logged.putInt(key, value)
+                    menu.putExtras(logged)
+                    startActivity(menu)
+                } else {
+                    Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
+                }
             }
 
         })

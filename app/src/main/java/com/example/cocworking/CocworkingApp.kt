@@ -1,7 +1,7 @@
 package com.example.cocworking
 
 import android.app.Application
-import com.jakewharton.threetenabp.AndroidThreeTen
+//import com.jakewharton.threetenabp.AndroidThreeTen
 
 
 class CocworkingApp : Application() {
@@ -10,7 +10,7 @@ class CocworkingApp : Application() {
         super.onCreate()
 
         // Initialize ThreeTenABP library for backward compatibility of java.time classes (added in Java 8) used in calendar
-        AndroidThreeTen.init(this)
+        //AndroidThreeTen.init(this)
     }
 
 }

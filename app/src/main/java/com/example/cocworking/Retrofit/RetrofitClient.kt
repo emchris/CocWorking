@@ -13,7 +13,7 @@ object RetrofitClient {
         if(instance ==null)
             instance = Retrofit.Builder() //così creo un Retrofit object
                 .baseUrl(BASE_URL) //Localhost will be changed in 10.0.2.2 in Emulator
-                .addConverterFactory(GsonConverterFactory.create()) //che differenza c'è con GsonConverterFactory??
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
         return instance!!

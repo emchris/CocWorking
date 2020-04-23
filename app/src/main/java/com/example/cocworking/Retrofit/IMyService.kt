@@ -11,10 +11,10 @@ interface IMyService { //in questa interfaccia definisco tutte le api calls, fac
     @FormUrlEncoded
     fun registerUser(@Field("email") email: String,
                      @Field("name") name: String,
-                     @Field("password") password: String) : Call<String>
+                     @Field("password") password: String) : Call<String> //una Call è una chiamata potenzialmente eseguibile che "impacchetta" qualcosa, in questo caso una stringa
 
     @POST("login")
     @FormUrlEncoded
     fun loginUser(@Field("email") email: String,
-                  @Field("password") password: String) : Call<String>
+                  @Field("password") password: String) : Call<DefaultResponse>
 }
