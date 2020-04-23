@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
-import com.example.cocworking.Retrofit.IMyService
+import com.example.cocworking.Retrofit.IMyService //Retrofit è una libreria per gestire le richieste http in applicazioni android
 import com.example.cocworking.Retrofit.RetrofitClient
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
 import com.rengwuxian.materialedittext.MaterialEditText
@@ -21,10 +21,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity: AppCompatActivity() {
 
-    lateinit var iMyService : IMyService
+    lateinit var iMyService : IMyService //creo variabile di tipo IMyService (interfaccia creata da me)
     internal var compositeDisposable = CompositeDisposable()
 
     override fun onStop(){
@@ -40,7 +43,7 @@ class LoginActivity: AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar_white))
 
         //Init API
-        val retrofit = RetrofitClient.getInstance()
+        val retrofit = RetrofitClient.getInstance() //salvo nella variabile retrofit l'istanza ritornata dalla funzione getInsance dell'oggetto RetrofitClient
         iMyService = retrofit.create(IMyService::class.java)
 
         //event
@@ -88,13 +91,17 @@ class LoginActivity: AppCompatActivity() {
 
     private fun registerUser(email: String, name: String, password: String) {
 
-        compositeDisposable.addAll(iMyService.registerUser(email, name, password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { result ->
-                Toast.makeText(this@LoginActivity, "" + result, Toast.LENGTH_SHORT).show()
+        iMyService.registerUser(email, name, password).enqueue(object : Callback<String>{
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-        )
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Toast.makeText(this@LoginActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     private fun loginUser(email: String, password: String) {
@@ -118,13 +125,17 @@ class LoginActivity: AppCompatActivity() {
             return;
         }
 
-        compositeDisposable.addAll(iMyService.loginUser(email, password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { result ->
-                Toast.makeText(this@LoginActivity, "" + result, Toast.LENGTH_SHORT).show()
+        iMyService.loginUser(email, password).enqueue(object : Callback<String>{
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-        )
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Toast.makeText(this@LoginActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
 
