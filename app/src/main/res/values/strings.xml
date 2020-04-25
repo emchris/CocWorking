@@ -40,6 +40,11 @@
     <string name="title_promozioni">PROMOZIONI</string>
     <string name="title_bacheca">BACHECA</string>
     <string name="title_eventi">EVENTI</string>
+    <string name="button_login" translatable="false">Login</string>
+    <string name="button_crea_account">Crea profilo</string>
+    <string name="title_email" translatable="false">Email</string>
+    <string name="title_password" translatable="false">Password</string>
+    <string name="title_name">Nome</string>
 
 
 </resources>
