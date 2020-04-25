@@ -3,7 +3,9 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorBase1">#FF7300</color>
+    <color name="colorBase1Dark">#994500</color>
     <color name="colorBase2">#02AABE</color>
+    <color name="colorBase2Dark">#035a63</color>
     <color name="occupato">#FF0202</color>
     <color name="libero">#93D051</color>
 
