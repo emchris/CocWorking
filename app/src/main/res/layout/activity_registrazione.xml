@@ -19,7 +19,7 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/button_crea_account"
         android:textColor="@color/colorPrimary"
-        app:backgroundTint="@color/colorBase2_Chiaro"
+        app:backgroundTint="@color/colorBase2Light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
