@@ -1,12 +1,12 @@
 package com.example.cocworking
 
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-
-
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -17,6 +17,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_white))
+        val b = intent.extras
+        var flag: Int = 0;
+        if(b?.getInt("IntentFlag") != null){
+            flag = b.getInt("IntentFlag")
+        } else {
+            flag = 0;
+        }
 
         //se clicco sul bottone "Piantina" apre un Activity
         button_piantina.setOnClickListener{
@@ -38,8 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         //se clicco sul bottone "Bacheca" apre un Activity
         button_bacheca.setOnClickListener{
-            val bacheca = Intent(applicationContext,BachecaActivity::class.java)
-            startActivity(bacheca)
+            if(flag == 1) {
+                val bacheca = Intent(applicationContext, BachecaActivity::class.java)
+                startActivity(bacheca)
+            } else {
+                Toast.makeText(this@MainActivity, "Compulsory Login", Toast.LENGTH_SHORT).show()
+            }
         }
 
         //se clicco sul bottone "Eventi" apre un Activity
@@ -86,5 +97,6 @@ class MainActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
+
 
 }
