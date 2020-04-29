@@ -51,33 +51,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.68" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_pdf_contratto"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/icon_pdf"
-        android:shadowColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/profilo_title"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_edit"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/icon_edit"
         android:shadowColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toEndOf="@+id/profilo_title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_profilo"

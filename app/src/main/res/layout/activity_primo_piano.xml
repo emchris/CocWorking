@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_reception"
         android:layout_width="0dp"
         android:layout_height="171dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_open_space"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_open_space"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_primo_piano"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_grande"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
@@ -106,7 +106,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_open_space"
         app:layout_constraintTop_toBottomOf="@+id/text_primo_piano" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_riunioni"
         android:layout_width="93dp"
         android:layout_height="0dp"
@@ -123,7 +123,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_open_space" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio3"
         android:layout_width="87dp"
         android:layout_height="0dp"
@@ -138,7 +138,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_reception"
         app:layout_constraintTop_toBottomOf="@+id/button_sala_grande" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio4"
         android:layout_width="87dp"
         android:layout_height="129dp"

@@ -34,4 +34,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar_blue" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_add"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/icon_add"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toEndOf="@+id/profilo_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_search"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="328dp"
+        android:layout_marginRight="328dp"
+        android:background="@drawable/icon_search"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toEndOf="@+id/profilo_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
