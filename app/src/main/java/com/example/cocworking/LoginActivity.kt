@@ -154,7 +154,7 @@ class LoginActivity: AppCompatActivity() {
     }
 
 
-    public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+   /* public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_access, menu)
         return true
     }
@@ -179,7 +179,7 @@ class LoginActivity: AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
 }
 
