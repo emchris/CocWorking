@@ -137,13 +137,15 @@ class LoginActivity: AppCompatActivity() {
 
                 if (null != response.body()?.flag) {
                     Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
-                    val key = "IntentFlag"
+                   /* val key = "IntentFlag"
                     val value = 1
                     val menu = Intent(applicationContext,MainActivity::class.java)
                     val logged = Bundle()
                     logged.putInt(key, value)
                     menu.putExtras(logged)
-                    startActivity(menu)
+                    startActivity(menu)*/
+                    val home = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(home)
                 } else {
                     Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
                 }

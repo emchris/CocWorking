@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity() {
             //if(flag == 1) {
                 val bacheca = Intent(applicationContext, BachecaActivity::class.java)
                 startActivity(bacheca)
-            //} else {
+            /*} else {
                 Toast.makeText(this@MainActivity, "Compulsory Login", Toast.LENGTH_SHORT).show()
-            //}
+            }*/
         }
 
         //se clicco sul bottone "Eventi" apre un Activity
