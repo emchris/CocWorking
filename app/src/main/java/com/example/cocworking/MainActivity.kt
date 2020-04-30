@@ -17,13 +17,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_white))
-        val b = intent.extras
+        /*val b = intent.extras
         var flag: Int = 0;
         if(b?.getInt("IntentFlag") != null){
             flag = b.getInt("IntentFlag")
         } else {
             flag = 0;
-        }
+        }*/
 
         //se clicco sul bottone "Piantina" apre un Activity
         button_piantina.setOnClickListener{
@@ -45,12 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         //se clicco sul bottone "Bacheca" apre un Activity
         button_bacheca.setOnClickListener{
-            if(flag == 1) {
+            //if(flag == 1) {
                 val bacheca = Intent(applicationContext, BachecaActivity::class.java)
                 startActivity(bacheca)
-            } else {
+            /*} else {
                 Toast.makeText(this@MainActivity, "Compulsory Login", Toast.LENGTH_SHORT).show()
-            }
+            }*/
         }
 
         //se clicco sul bottone "Eventi" apre un Activity
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         R.id.user -> {
             //Se clicco su "profilo" si apre l'activity relativa
             //BISOGNA METTERE IL CONTROLLO PER VERIFICARE SE SI è GIà FATTO L'ACCESSO E QUINDI APRIRE IL PROFILO
-            val profilo = Intent(applicationContext,LoginActivity::class.java)
+            val profilo = Intent(applicationContext,ProfiloActivity ::class.java)
             startActivity(profilo)
             true
         }
