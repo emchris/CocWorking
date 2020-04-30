@@ -3,10 +3,17 @@ package com.example.cocworking
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.kizitonwose.calendarview.ui.ViewContainer
+import com.kizitonwose.calendarview.ui.DayBinder
+import com.kizitonwose.calendarview.model.CalendarDay
+import kotlinx.android.synthetic.main.activity_sala_riunioni.*
+import kotlinx.android.synthetic.main.calendar_day_layout.view.*
+import org.threeten.bp.YearMonth
+import org.threeten.bp.temporal.WeekFields
+import java.util.*
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
@@ -15,6 +22,30 @@ class SalaRiunioniActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
+
+        class DayViewContainer(view: View) : ViewContainer(view) {
+            val textView = view.calendarDayText
+
+            // Without the kotlin android extensions plugin
+            //val textView = view.findViewById<TextView>(R.id.calendarDayText)
+        }
+
+        calendarView.dayBinder = object : DayBinder<DayViewContainer> {
+            // Called only when a new container is needed.
+            override fun create(view: View) = DayViewContainer(view)
+
+            // Called every time we need to reuse a container.
+            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                container.textView.text = day.date.dayOfMonth.toString()
+            }
+        }
+
+        val currentMonth = YearMonth.now()
+        val firstMonth = currentMonth.minusMonths(10)
+        val lastMonth = currentMonth.plusMonths(10)
+        val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
+        calendarView.setup(firstMonth, lastMonth, firstDayOfWeek)
+        calendarView.scrollToMonth(currentMonth)
 
     }
 
