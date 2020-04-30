@@ -29,7 +29,7 @@
         <activity android:name=".SetupActivity"></activity>
         <activity android:name=".NotificheActivity"></activity>
         <activity android:name=".RegistrazioneActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name="LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
