@@ -3,12 +3,17 @@ package com.example.cocworking
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_about_us.*
 
 class ProfiloActivity : AppCompatActivity() {
+
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +21,24 @@ class ProfiloActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profilo)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
 
+        val informazioni = intent.extras
+
+        /*if(null != informazioni?.getString("name") && null != informazioni?.getString("email") ) {
+
+            val nome : String = informazioni.getString("name").toString()
+            val mail : String = informazioni.getString("email").toString()
+
+            Log.d("funziona anche qui", nome)
+            Log.d("funziona anche qui", mail)*/
+            val mypreference = MyPreference(this)
+            var nome_account = mypreference.getAccountInfo()
+            var email_account = mypreference.getPreferenceEmail()
+
+            val NameProfile: TextView = findViewById(R.id.nome_cognome) as TextView
+            NameProfile.setText(nome_account)
+            val EmailProfile: TextView = findViewById(R.id.info_utente) as TextView
+            EmailProfile.setText(email_account)
+        //}
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {

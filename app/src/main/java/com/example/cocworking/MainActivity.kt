@@ -3,20 +3,40 @@ package com.example.cocworking
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_profilo.*
 
 
 class MainActivity : AppCompatActivity() {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_white))
+
+
+
+
+        var informazioni = intent.extras
+        if(null != informazioni?.getString("name") && null != informazioni?.getString("email") ) {
+
+            val nome: String = informazioni.getString("name").toString()
+            val mail: String = informazioni.getString("email").toString()
+            val mypreference = MyPreference(this)
+            mypreference.setAccountInfo(nome, mail)
+        }
+
+
+
+        //val info : String? = intent.getStringExtra("cose")
+        //Log.d("funziona anche qui", info.toString())
         /*val b = intent.extras
         var flag: Int = 0;
         if(b?.getInt("IntentFlag") != null){

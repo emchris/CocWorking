@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -21,6 +22,7 @@ import com.rengwuxian.materialedittext.MaterialEditText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_about_us.*
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -144,8 +146,26 @@ class LoginActivity: AppCompatActivity() {
                     logged.putInt(key, value)
                     menu.putExtras(logged)
                     startActivity(menu)*/
-                    val home = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(home)
+                    if(null != response.body()?.name){
+                        val nome = response.body()?.name.toString()
+                        val mail = response.body()?.email.toString()
+                        Log.d("funziona", nome)
+
+                        //val info : ArrayList<String> = ArrayList()
+                        //info.add(0, nome)
+                        //info.add(1, mail)
+                        val data = Bundle()
+                        data.putString("name", nome)
+                        data.putString("email", mail)
+                        //data!!.putSerializable("dati", info)
+                        //Log.d("funziona", info.get(1))
+                        val home = Intent(applicationContext, MainActivity::class.java)
+                        //val profilo = Intent(applicationContext, ProfiloActivity::class.java)
+                        home.putExtras(data)
+                        startActivity(home)
+
+
+                    }
                 } else {
                     Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
                 }
