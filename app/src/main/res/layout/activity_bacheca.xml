@@ -197,7 +197,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="11dp"
                     android:layout_marginRight="11dp"
-                    android:text="Oggi faremo dei colloqui, ci scusiamo per il rumore che provocheremo."
+                    android:text="Oggi faremo dei colloqui quindi ci saranno un po' di persone nel corridoio. Ci scusiamo per il disagio."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_profile3" />
@@ -281,7 +281,7 @@
                     android:layout_width="302dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="12dp"
-                    android:text="Il mio ufficio è finalmente pronto."
+                    android:text="Primo giorno!"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/photo_published2" />
