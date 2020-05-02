@@ -6,15 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/ellissi_arancione3"
-        android:layout_width="774dp"
-        android:layout_height="55dp"
+        android:id="@+id/ellissi_arancione"
+        android:layout_width="799dp"
+        android:layout_height="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
+        app:layout_constraintVertical_bias="0.145"
         app:srcCompat="@drawable/semelissi_arancione_land" />
 
     <include

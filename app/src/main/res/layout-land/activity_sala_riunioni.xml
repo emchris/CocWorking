@@ -8,10 +8,6 @@
     android:visibility="visible"
     tools:context=".SalaRiunioniActivity">
 
-    <include
-        android:id="@+id/toolbar_orange"
-        layout="@layout/toolbar_orange" />
-
     <ImageView
         android:id="@+id/ellissi_arancione"
         android:layout_width="799dp"
@@ -23,11 +19,14 @@
         app:layout_constraintVertical_bias="0.145"
         app:srcCompat="@drawable/semelissi_arancione_land" />
 
+    <include
+        android:id="@+id/toolbar_orange"
+        layout="@layout/toolbar_orange" />
+
     <TextView
-        android:id="@+id/text_primo_piano"
+        android:id="@+id/text_secondo_piano"
         android:layout_width="206dp"
         android:layout_height="47dp"
-        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:text="@string/title_sala_riunione"
         android:textAllCaps="true"
@@ -48,7 +47,7 @@
         android:textSize="35sp"
         android:textStyle="bold"
         app:fontFamily="@font/amatic_sc"
-        app:layout_constraintBottom_toTopOf="@+id/text_primo_piano"
+        app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"

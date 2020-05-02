@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/semelissi_arancione" />
 
     <TextView
-        android:id="@+id/text_primo_piano"
+        android:id="@+id/text_secondo_piano"
         android:layout_width="206dp"
         android:layout_height="47dp"
         android:layout_marginTop="24dp"
@@ -46,7 +46,7 @@
         android:textSize="40sp"
         android:textStyle="bold"
         app:fontFamily="@font/amatic_sc"
-        app:layout_constraintBottom_toTopOf="@+id/text_primo_piano"
+        app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,6 @@
         android:layout_height="wrap_content"
         app:cv_dayViewResource="@layout/calendar_day_layout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_primo_piano" />
+        app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

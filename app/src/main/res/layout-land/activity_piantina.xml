@@ -9,9 +9,36 @@
     android:visibility="visible"
     tools:context=".PiantinaActivity">
 
+    <ImageView
+        android:id="@+id/ellissi_arancione"
+        android:layout_width="799dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145"
+        app:srcCompat="@drawable/semelissi_arancione_land" />
+
     <include
         android:id="@+id/toolbar_orange"
         layout="@layout/toolbar_orange" />
+
+    <TextView
+        android:id="@+id/text_piantina"
+        android:layout_width="114dp"
+        android:layout_height="43dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_piantina"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/amatic_sc"
+        app:layout_constraintBottom_toTopOf="@+id/text_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_2_piano"
@@ -75,34 +102,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_piantina" />
-
-    <ImageView
-        android:id="@+id/ellissi_arancione"
-        android:layout_width="774dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
-        app:srcCompat="@drawable/semelissi_arancione_land" />
-
-    <TextView
-        android:id="@+id/text_piantina"
-        android:layout_width="114dp"
-        android:layout_height="43dp"
-        android:gravity="center_horizontal"
-        android:text="@string/title_piantina"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/colorPrimary"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/amatic_sc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_piantina.*
 import kotlinx.android.synthetic.main.activity_primo_piano.*
+
 
 class PrimoPianoActivity: AppCompatActivity() {
 
@@ -18,15 +19,13 @@ class PrimoPianoActivity: AppCompatActivity() {
         setContentView(R.layout.activity_primo_piano)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
 
-
-        //se clicco sul bottone "Cocò Working" apre un Activity
+        //se clicco sul bottone "Sala Riunioni" apre la propria Activity
         button_sala_riunioni.setOnClickListener{
-            val meet = Intent(applicationContext,SalaRiunioniActivity::class.java)
-            startActivity(meet)
+            val meeting = Intent(applicationContext,SalaRiunioniActivity::class.java)
+            startActivity(meeting)
         }
 
     }
-
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
