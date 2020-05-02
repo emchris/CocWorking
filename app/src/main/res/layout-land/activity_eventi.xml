@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -33,5 +34,222 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar_blue" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="645dp"
+        android:layout_height="249dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ellissi_azzurra">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Maggio2020"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text_maggio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Maggio 2020"
+                    android:textColor="@color/colorBase1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/maggio_8"
+                    app:layout_constraintStart_toStartOf="@+id/maggio_8"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/maggio_8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_1"
+                    app:layout_constraintStart_toStartOf="@+id/maggio_17"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_1"
+                    app:srcCompat="@drawable/maggio_8" />
+
+                <TextView
+                    android:id="@+id/text_event_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="Cocò Party"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/maggio_17" />
+
+                <TextView
+                    android:id="@+id/text_event_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Incontro con Nespolo"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_2"
+                    app:layout_constraintStart_toEndOf="@+id/maggio_8" />
+
+                <ImageView
+                    android:id="@+id/maggio_17"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_2"
+                    app:srcCompat="@drawable/maggio_17" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Giugno2020"
+                android:layout_width="match_parent"
+                android:layout_height="175dp">
+
+                <TextView
+                    android:id="@+id/text_giugno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="Giugno 2020"
+                    android:textColor="@color/colorBase1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/giugno_13"
+                    app:layout_constraintStart_toStartOf="@+id/giugno_13"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/giugno_13"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_4"
+                    app:layout_constraintStart_toStartOf="@+id/giugno_22"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_4"
+                    app:srcCompat="@drawable/giugno_13" />
+
+                <TextView
+                    android:id="@+id/text_event_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="Cocò Party"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/giugno_22" />
+
+                <TextView
+                    android:id="@+id/text_event_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Caffè Working"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_3"
+                    app:layout_constraintStart_toEndOf="@+id/giugno_13" />
+
+                <ImageView
+                    android:id="@+id/giugno_22"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_3"
+                    app:srcCompat="@drawable/giugno_22" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Luglio2020"
+                android:layout_width="match_parent"
+                android:layout_height="175dp">
+
+
+                <TextView
+                    android:id="@+id/text_luglio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="Luglio 2020"
+                    android:textColor="@color/colorBase1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/luglio_2"
+                    app:layout_constraintStart_toStartOf="@+id/luglio_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/luglio_2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_6"
+                    app:layout_constraintStart_toStartOf="@+id/luglio_21"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_6"
+                    app:srcCompat="@drawable/luglio_2" />
+
+                <TextView
+                    android:id="@+id/text_event_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Caffè Working"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_5"
+                    app:layout_constraintStart_toEndOf="@+id/luglio_2" />
+
+                <ImageView
+                    android:id="@+id/luglio_21"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_5"
+                    app:srcCompat="@drawable/luglio_21" />
+
+                <TextView
+                    android:id="@+id/text_event_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="Cocò Party: Summer Edition"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/luglio_21" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
