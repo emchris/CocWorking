@@ -13,12 +13,10 @@
         android:id="@+id/toolbar_orange"
         layout="@layout/toolbar_orange" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_2_piano"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginEnd="169dp"
         android:layout_marginRight="169dp"
         android:layout_marginBottom="3dp"
@@ -28,15 +26,15 @@
         app:layout_constraintStart_toEndOf="@+id/button_1_piano"
         app:layout_constraintTop_toTopOf="@+id/button_1_piano" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_1_piano"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginStart="153dp"
         android:layout_marginLeft="153dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/primo_piano"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,6 +92,7 @@
         android:id="@+id/text_piantina"
         android:layout_width="114dp"
         android:layout_height="43dp"
+        android:gravity="center_horizontal"
         android:text="@string/title_piantina"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/colorPrimary"

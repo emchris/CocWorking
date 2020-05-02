@@ -25,6 +25,7 @@
         android:layout_width="102dp"
         android:layout_height="51dp"
         android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
         android:text="@string/title_bacheca"
         android:textColor="@color/colorPrimary"
         android:textSize="37sp"
@@ -82,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Relax"
+        android:text="@string/text_relax"
         app:layout_constraintEnd_toEndOf="@+id/button_filter_Relax"
         app:layout_constraintStart_toStartOf="@+id/button_filter_Relax"
         app:layout_constraintTop_toBottomOf="@+id/button_filter_Relax" />
@@ -106,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lavoro"
+        android:text="@string/text_lavoro"
         app:layout_constraintEnd_toEndOf="@+id/button_filter_work"
         app:layout_constraintStart_toStartOf="@+id/button_filter_work"
         app:layout_constraintTop_toBottomOf="@+id/button_filter_work" />
@@ -130,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Sport"
+        android:text="@string/text_sport"
         app:layout_constraintEnd_toEndOf="@+id/button_filter_sport"
         app:layout_constraintStart_toStartOf="@+id/button_filter_sport"
         app:layout_constraintTop_toBottomOf="@+id/button_filter_sport" />
@@ -204,8 +205,8 @@
 
                 <Button
                     android:id="@+id/button_rispondi3"
-                    android:layout_width="83dp"
-                    android:layout_height="35dp"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
                     android:layout_marginStart="60dp"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="8dp"
@@ -214,7 +215,7 @@
                     android:background="@drawable/roundedbutton"
                     android:checkable="false"
                     android:ellipsize="none"
-                    android:text="Rispondi"
+                    android:text="@string/text_rispondi"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
@@ -288,8 +289,8 @@
 
                 <Button
                     android:id="@+id/button_rispondi2"
-                    android:layout_width="83dp"
-                    android:layout_height="35dp"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
                     android:layout_marginStart="60dp"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="8dp"
@@ -299,7 +300,7 @@
                     android:backgroundTint="@color/colorBase2Light"
                     android:checkable="false"
                     android:ellipsize="none"
-                    android:text="Rispondi"
+                    android:text="@string/text_rispondi"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
@@ -377,8 +378,8 @@
 
                 <Button
                     android:id="@+id/button_rispondi"
-                    android:layout_width="83dp"
-                    android:layout_height="35dp"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
                     android:layout_marginStart="60dp"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="8dp"
@@ -389,7 +390,7 @@
                     android:backgroundTint="@color/colorBase2Light"
                     android:checkable="false"
                     android:ellipsize="none"
-                    android:text="Rispondi"
+                    android:text="@string/text_rispondi"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"

@@ -29,7 +29,8 @@
         android:id="@+id/text_piantina"
         android:layout_width="118dp"
         android:layout_height="52dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
         android:text="@string/title_piantina"
         android:textColor="@color/colorPrimary"
         android:textSize="35sp"
@@ -40,10 +41,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_riunioni"
-        android:layout_width="0dp"
-        android:layout_height="144dp"
+        android:layout_width="78dp"
+        android:layout_height="145dp"
         android:layout_marginStart="212dp"
         android:layout_marginLeft="212dp"
         android:layout_marginBottom="45dp"
@@ -52,12 +53,13 @@
         android:text="@string/button_sala_riunioni"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_reception"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_open_space" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_grande"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -68,31 +70,33 @@
         android:text="@string/button_sala_grande"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/button_open_space"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_open_space"
         app:layout_constraintTop_toTopOf="@+id/button_open_space"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio3"
-        android:layout_width="70dp"
-        android:layout_height="0dp"
+        android:layout_width="60dp"
+        android:layout_height="96dp"
         android:layout_marginEnd="213dp"
         android:layout_marginRight="213dp"
         android:background="@color/libero"
         android:text="@string/button_ufficio_1"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_ufficio4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_reception"
         app:layout_constraintTop_toBottomOf="@+id/button_sala_grande" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio4"
-        android:layout_width="70dp"
-        android:layout_height="80dp"
+        android:layout_width="62dp"
+        android:layout_height="66dp"
         android:layout_marginEnd="213dp"
         android:layout_marginRight="213dp"
         android:layout_marginBottom="17dp"
@@ -101,29 +105,29 @@
         android:text="@string/button_ufficio_2"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button_reception"
-        app:layout_constraintTop_toBottomOf="@+id/button_ufficio3" />
+        app:layout_constraintStart_toEndOf="@+id/button_reception" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_reception"
         android:layout_width="117dp"
         android:layout_height="132dp"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="43dp"
         android:background="#CCF2F2F2"
         android:gravity="center"
         android:text="@string/reception"
         android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_ufficio3"
         app:layout_constraintStart_toEndOf="@+id/button_sala_riunioni"
         app:layout_constraintTop_toBottomOf="@+id/button_open_space"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_open_space"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -132,9 +136,12 @@
         android:layout_marginTop="8dp"
         android:background="@color/libero"
         android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
         android:text="@string/button_open_space"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_sala_riunioni"
         app:layout_constraintEnd_toStartOf="@+id/button_sala_grande"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,11 +151,12 @@
         android:id="@+id/text_primo_piano"
         android:layout_width="136dp"
         android:layout_height="41dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:text="@string/title_primo_piano"
         android:textAllCaps="true"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_sala_grande"
         app:layout_constraintEnd_toEndOf="parent"

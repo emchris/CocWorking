@@ -28,6 +28,8 @@
         android:id="@+id/text_piantina"
         android:layout_width="118dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
         android:text="@string/title_piantina"
         android:textColor="@color/colorPrimary"
         android:textSize="35sp"
@@ -39,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_riunioni"
         android:layout_width="0dp"
         android:layout_height="144dp"
@@ -56,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_open_space" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sala_grande"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -73,7 +75,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_open_space"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio3"
         android:layout_width="70dp"
         android:layout_height="0dp"
@@ -88,7 +90,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_reception"
         app:layout_constraintTop_toBottomOf="@+id/button_sala_grande" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio4"
         android:layout_width="70dp"
         android:layout_height="80dp"
@@ -106,7 +108,7 @@
         app:layout_constraintStart_toEndOf="@+id/button_reception"
         app:layout_constraintTop_toBottomOf="@+id/button_ufficio3" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_reception"
         android:layout_width="117dp"
         android:layout_height="132dp"
@@ -121,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button_open_space"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_open_space"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -144,10 +146,10 @@
         android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:text="@string/title_secondo_piano"
         android:textAllCaps="true"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_sala_grande"
         app:layout_constraintEnd_toEndOf="parent"

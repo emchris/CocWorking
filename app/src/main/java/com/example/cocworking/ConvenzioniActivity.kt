@@ -16,13 +16,6 @@ class ConvenzioniActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_convenzioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
-
-
-        //se clicco sul bottone "Promo" apre un Activity
-        text_bacheca.setOnClickListener {
-            val promo = Intent(applicationContext, PromoActivity::class.java)
-            startActivity(promo)
-        }
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {

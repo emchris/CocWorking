@@ -9,19 +9,6 @@
     android:visibility="visible"
     tools:context=".ProfiloActivity">
 
-    <TextView
-        android:id="@+id/professione_utente"
-        android:layout_width="370dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_professione" />
-
     <include
         android:id="@+id/toolbar_orange"
         layout="@layout/toolbar_orange" />
@@ -51,31 +38,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.68" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_pdf_contratto"
-        android:layout_width="66dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/icon_pdf"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/profilo_title"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_edit"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/icon_edit"
-        android:shadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toEndOf="@+id/profilo_title"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/image_profilo"
         android:layout_width="80dp"
@@ -98,6 +60,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
+        android:layout_marginBottom="37dp"
         android:ems="10"
         android:gravity="center"
         android:text="Nome Cognome"
@@ -112,149 +75,52 @@
         android:id="@+id/title_dati_e_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="292dp"
         android:layout_marginRight="292dp"
-        android:layout_marginBottom="20dp"
         android:text="@string/title_dati_e_info"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/info_utente"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/info_utente"
         app:layout_constraintTop_toBottomOf="@+id/nome_cognome" />
 
     <TextView
         android:id="@+id/title_professione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="18dp"
         android:layout_marginEnd="276dp"
         android:layout_marginRight="276dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="1dp"
         android:text="@string/title_professione"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/professione_utente"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_utente" />
+        app:layout_constraintStart_toStartOf="@+id/professione_utente" />
 
     <TextView
-        android:id="@+id/title_interessi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/professione_utente"
+        android:layout_width="370dp"
+        android:layout_height="42dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="57dp"
-        android:text="@string/title_interessi"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="172dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/interesse"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_facebook" />
-
-    <TextView
-        android:id="@+id/title_collegamenti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="265dp"
-        android:layout_marginRight="265dp"
-        android:text="@string/title_collegamenti"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professione_utente" />
-
-    <ImageView
-        android:id="@+id/interesse"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/interesse2"
-        app:layout_constraintStart_toEndOf="@+id/title_interessi"
-        app:srcCompat="@drawable/icon_sport" />
-
-    <ImageView
-        android:id="@+id/interesse2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
-        app:layout_constraintBottom_toBottomOf="@+id/interesse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/interesse"
-        app:layout_constraintTop_toTopOf="@+id/interesse"
-        app:srcCompat="@drawable/icon_relax" />
-
-    <ImageView
-        android:id="@+id/logo_facebook"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/title_interessi"
-        app:layout_constraintEnd_toStartOf="@+id/logo_instagram"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_collegamenti"
-        app:srcCompat="@drawable/icon_facebook" />
-
-    <ImageView
-        android:id="@+id/logo_instagram"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_facebook"
-        app:layout_constraintEnd_toStartOf="@+id/logo_linkedin"
-        app:layout_constraintStart_toEndOf="@+id/logo_facebook"
-        app:layout_constraintTop_toTopOf="@+id/logo_facebook"
-        app:srcCompat="@drawable/icon_instagram" />
-
-    <ImageView
-        android:id="@+id/logo_linkedin"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginRight="232dp"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_instagram"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logo_instagram"
-        app:layout_constraintTop_toTopOf="@+id/logo_instagram"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/icon_linkedin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/info_utente"
         android:layout_width="370dp"
         android:layout_height="42dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/title_professione"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_dati_e_info" />
+        app:layout_constraintStart_toStartOf="@+id/title_professione" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
