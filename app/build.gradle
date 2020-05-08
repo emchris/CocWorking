@@ -56,4 +56,7 @@ dependencies {
 
     //CalendareView
     implementation 'com.github.kizitonwose:CalendarView:0.3.4'
+
+    //BlurBackground
+    implementation 'com.eightbitlab:blurview:1.6.3'
 }
