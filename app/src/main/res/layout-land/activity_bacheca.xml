@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -24,6 +25,7 @@
         android:layout_width="101dp"
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
+        android:gravity="center_horizontal"
         android:text="@string/title_bacheca"
         android:textColor="@color/colorPrimary"
         android:textSize="37sp"
@@ -32,5 +34,311 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar_blue" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_add"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/icon_add"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/button_search"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/icon_search"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_Relax"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/icon_relax"
+        android:contentDescription="@string/text_relax"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/button_filter_sport"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_work"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:background="@drawable/icon_work"
+        android:contentDescription="@string/text_lavoro"
+        android:cursorVisible="true"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ellissi_azzurra" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_sport"
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:background="@drawable/icon_sport"
+        android:contentDescription="@string/text_sport"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/button_filter_work"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
+
+    <ScrollView
+        android:layout_width="680dp"
+        android:layout_height="252dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_filter_Relax">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Post3"
+                android:layout_width="match_parent"
+                android:layout_height="168dp">
+
+                <ImageView
+                    android:id="@+id/image_profile3"
+                    android:layout_width="51dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_name_profile3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_name_profile3"
+                    app:srcCompat="@drawable/ic_account"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/text_name_profile3"
+                    android:layout_width="196dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Rossella Gatti"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/image_profile3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_message3"
+                    android:layout_width="625dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:text="Oggi faremo dei colloqui quindi ci saranno un po' di persone nel corridoio. Ci scusiamo per il disagio."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile3" />
+
+                <Button
+                    android:id="@+id/button_rispondi3"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="574dp"
+                    android:layout_marginRight="574dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/roundedbutton"
+                    android:checkable="false"
+                    android:ellipsize="none"
+                    android:text="@string/text_rispondi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/colorBase2Light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_message3"
+                    app:layout_constraintVertical_bias="0.103" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Post2"
+                android:layout_width="match_parent"
+                android:layout_height="185dp">
+
+                <ImageView
+                    android:id="@+id/image_profile2"
+                    android:layout_width="51dp"
+                    android:layout_height="59dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_name_profile2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_name_profile2"
+                    app:srcCompat="@drawable/ic_account"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/text_name_profile2"
+                    android:layout_width="196dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Carlo Cracco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/image_profile2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/photo_published2"
+                    android:layout_width="226dp"
+                    android:layout_height="115dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/text_message2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile2"
+                    app:srcCompat="@drawable/photo" />
+
+                <TextView
+                    android:id="@+id/text_message2"
+                    android:layout_width="347dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginBottom="19dp"
+                    android:text="Primo giorno!"
+                    app:layout_constraintBottom_toTopOf="@+id/button_rispondi2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/photo_published2" />
+
+                <Button
+                    android:id="@+id/button_rispondi2"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
+                    android:layout_marginEnd="324dp"
+                    android:layout_marginRight="324dp"
+                    android:layout_marginBottom="26dp"
+                    android:background="@drawable/roundedbutton"
+                    android:backgroundTint="@color/colorBase2Light"
+                    android:checkable="false"
+                    android:ellipsize="none"
+                    android:text="@string/text_rispondi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/colorBase2Light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_message2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Post1"
+                android:layout_width="match_parent"
+                android:layout_height="193dp">
+
+                <ImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="51dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_name_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_name_profile"
+                    app:srcCompat="@drawable/ic_account"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/text_name_profile"
+                    android:layout_width="196dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Luisa Rossi"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/image_profile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/photo_published"
+                    android:layout_width="169dp"
+                    android:layout_height="95dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile"
+                    app:srcCompat="@mipmap/coco_logo" />
+
+                <TextView
+                    android:id="@+id/text_message"
+                    android:layout_width="299dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginEnd="154dp"
+                    android:layout_marginRight="154dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Benvenuti in CocòWorking!"
+                    app:layout_constraintBottom_toTopOf="@+id/button_rispondi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/photo_published" />
+
+                <Button
+                    android:id="@+id/button_rispondi"
+                    android:layout_width="86dp"
+                    android:layout_height="39dp"
+                    android:layout_marginEnd="370dp"
+                    android:layout_marginRight="370dp"
+                    android:layout_marginBottom="34dp"
+                    android:background="@drawable/roundedbutton"
+                    android:backgroundTint="@color/colorBase2Light"
+                    android:checkable="false"
+                    android:ellipsize="none"
+                    android:text="@string/text_rispondi"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/colorBase2Light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_message" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

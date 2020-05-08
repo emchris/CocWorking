@@ -46,6 +46,10 @@
     <string name="title_email" translatable="false">Email</string>
     <string name="title_password" translatable="false">Password</string>
     <string name="title_name">Nome</string>
+    <string name="text_relax" translatable="false">Relax</string>
+    <string name="text_lavoro">Lavoro</string>
+    <string name="text_sport" translatable="false">Sport</string>
+    <string name="text_rispondi">Rispondi</string>
 
 
 </resources>
