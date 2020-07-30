@@ -41,6 +41,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_white"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/name" />
 
     <TextView
@@ -82,6 +83,7 @@
         android:id="@+id/contatti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:text="@string/title_contatti"
         android:textAlignment="center"
@@ -94,6 +96,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chi_siamo" />
+
+    <TextView
+        android:id="@+id/web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:drawableStart="@drawable/icon_link_orange"
+        android:drawableLeft="@drawable/icon_link_orange"
+        android:gravity="center_horizontal"
+        android:text="@string/web"
+        android:textAlignment="center"
+        android:textColorLink="#BA000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/contatti" />
 
     <TextView
         android:id="@+id/phone"
@@ -129,8 +147,8 @@
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
         android:autoLink="map"
         android:drawableStart="@drawable/icon_map_orange"
         android:drawableLeft="@drawable/icon_map_orange"
@@ -141,22 +159,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mobile" />
-
-    <TextView
-        android:id="@+id/web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:drawableStart="@drawable/icon_link_orange"
-        android:drawableLeft="@drawable/icon_link_orange"
-        android:gravity="center_horizontal"
-        android:text="@string/web"
-        android:textAlignment="center"
-        android:textColorLink="#BA000000"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/contatti" />
 
     <TextView
         android:id="@+id/email"

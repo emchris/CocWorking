@@ -27,12 +27,14 @@ class SalaRiunioniActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
 
+
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
 
             // Without the kotlin android extensions plugin
             //val textView = view.findViewById<TextView>(R.id.calendarDayText)
         }
+
 
         calendarView.dayBinder = object : DayBinder<DayViewContainer> {
             // Called only when a new container is needed.
@@ -62,7 +64,6 @@ class SalaRiunioniActivity : AppCompatActivity() {
         calendarView.scrollToMonth(currentMonth)
         Log.d("CALENDAR_CREATION","$currentMonth \n $firstMonth \n $lastMonth \n $firstDayOfWeek")
     }
-
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

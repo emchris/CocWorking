@@ -35,4 +35,6 @@
     <string name="title_promozioni">PROMOTIONS</string>
     <string name="button_crea_account">Create account</string>
     <string name="title_name">Name</string>
+    <string name="text_lavoro">Job</string>
+    <string name="text_rispondi">Comment</string>
 </resources>

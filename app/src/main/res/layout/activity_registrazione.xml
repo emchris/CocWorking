@@ -5,27 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/createAccount"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="242dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/button_crea_account"
-        android:textColor="@color/colorPrimary"
-        app:backgroundTint="@color/colorBase2Light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterPassword" />
-
     <include
         android:id="@+id/toolbar_white"
         layout="@layout/toolbar_white"
