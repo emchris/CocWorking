@@ -4,13 +4,17 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.model.CalendarDay
+import com.kizitonwose.calendarview.model.CalendarMonth
+import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
+import kotlinx.android.synthetic.main.calendar_header.view.*
 import org.threeten.bp.YearMonth
 import org.threeten.bp.temporal.WeekFields
 import java.util.*
@@ -39,6 +43,16 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 container.textView.text = day.date.dayOfMonth.toString()
             }
         }
+        class MonthViewContainer(view: View) : ViewContainer(view) {
+            val textView = view.calendarHeaderText
+        }
+        calendarView.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
+            override fun create(view: View) = MonthViewContainer(view)
+            override fun bind(container: MonthViewContainer, month: CalendarMonth) {
+                val monthTitle = "${month.yearMonth.month.name.toLowerCase().capitalize()} ${month.year}"
+                container.textView.text = monthTitle
+            }
+        }
 
         val currentMonth = YearMonth.now()
         val firstMonth = currentMonth.minusMonths(10)
@@ -46,7 +60,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
         val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
         calendarView.setup(firstMonth, lastMonth, firstDayOfWeek)
         calendarView.scrollToMonth(currentMonth)
-
+        Log.d("CALENDAR_CREATION","$currentMonth \n $firstMonth \n $lastMonth \n $firstDayOfWeek")
     }
 
 
