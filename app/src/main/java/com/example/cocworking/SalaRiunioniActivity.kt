@@ -15,8 +15,8 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import org.threeten.bp.YearMonth
-import org.threeten.bp.temporal.WeekFields
+import java.time.YearMonth
+import java.time.temporal.WeekFields
 import java.util.*
 
 class SalaRiunioniActivity : AppCompatActivity() {
