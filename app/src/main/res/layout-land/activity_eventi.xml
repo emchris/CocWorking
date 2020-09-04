@@ -179,7 +179,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/text_event_3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/text_event_3"
-                    app:srcCompat="@drawable/giugno_22" />
+                    app:srcCompat="@drawable/giugno_22"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,13 +207,13 @@
                     android:id="@+id/luglio_2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_event_6"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_5"
                     app:layout_constraintStart_toStartOf="@+id/luglio_21"
-                    app:layout_constraintTop_toTopOf="@+id/text_event_6"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_5"
                     app:srcCompat="@drawable/luglio_2" />
 
                 <TextView
-                    android:id="@+id/text_event_6"
+                    android:id="@+id/text_event_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -221,7 +221,7 @@
                     android:layout_marginBottom="32dp"
                     android:text="Caffè Working"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/text_event_5"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_6"
                     app:layout_constraintStart_toEndOf="@+id/luglio_2" />
 
                 <ImageView
@@ -230,13 +230,13 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_event_5"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/text_event_5"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_6"
                     app:srcCompat="@drawable/luglio_21" />
 
                 <TextView
-                    android:id="@+id/text_event_5"
+                    android:id="@+id/text_event_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -246,6 +246,138 @@
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/luglio_21" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Settembre2020"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/text_settembre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="Settembre 2020"
+                    android:textColor="@color/colorBase1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/settembre_13"
+                    app:layout_constraintStart_toStartOf="@+id/settembre_13"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/settembre_13"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_7"
+                    app:layout_constraintStart_toStartOf="@+id/settembre_21"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_7"
+                    app:srcCompat="@drawable/giugno_13" />
+
+                <TextView
+                    android:id="@+id/text_event_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Caffè Working"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_8"
+                    app:layout_constraintStart_toEndOf="@+id/settembre_13" />
+
+                <ImageView
+                    android:id="@+id/settembre_21"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_8"
+                    app:srcCompat="@drawable/luglio_21" />
+
+                <TextView
+                    android:id="@+id/text_event_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="Cocò Party"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settembre_21" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Ottobre2020"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/text_ottobre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="11dp"
+                    android:text="Ottobre 2020"
+                    android:textColor="@color/colorBase1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/ottobre_8"
+                    app:layout_constraintStart_toStartOf="@+id/ottobre_8"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ottobre_8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_9"
+                    app:layout_constraintStart_toStartOf="@+id/ottobre_17"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_9"
+                    app:srcCompat="@drawable/maggio_8" />
+
+                <TextView
+                    android:id="@+id/text_event_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Caffè Working"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/text_event_10"
+                    app:layout_constraintStart_toEndOf="@+id/ottobre_8" />
+
+                <ImageView
+                    android:id="@+id/ottobre_17"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_event_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_event_10"
+                    app:srcCompat="@drawable/maggio_17" />
+
+                <TextView
+                    android:id="@+id/text_event_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="26dp"
+                    android:text="Cocò Party"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ottobre_17" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

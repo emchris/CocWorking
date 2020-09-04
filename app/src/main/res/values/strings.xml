@@ -35,9 +35,7 @@
     <string name="title_collegamenti">Collegamenti</string>
     <string name="title_interessi">Interessi</string>
     <string name="title_sala_riunione">SALA RIUNIONE</string>
-    <string name="title_convenzioni">CONVENZIONI</string>
-    <string name="title_promo">PROMO</string>
-    <string name="title_promozioni">PROMOZIONI</string>
+    <string name="title_vetrina">VETRINA</string>
     <string name="title_bacheca">BACHECA</string>
     <string name="title_eventi">EVENTI</string>
     <string name="button_login" translatable="false">Login</string>
