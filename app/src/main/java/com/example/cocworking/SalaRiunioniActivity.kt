@@ -31,7 +31,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
 
-            // Without the kotlin android extensions plugin
+            // Without the kotlin android extensions plugin:
             //val textView = view.findViewById<TextView>(R.id.calendarDayText)
         }
 
