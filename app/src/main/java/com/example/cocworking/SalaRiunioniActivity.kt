@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.*
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cocworking.models.Event
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -15,11 +17,41 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
+import java.time.LocalDate
 import java.time.YearMonth
+import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
 
 class SalaRiunioniActivity : AppCompatActivity() {
+
+    private val eventsAdapter = EventAdapter {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.event_dialog_delete)
+            .setPositiveButton(R.string.delete) { _, _ ->
+                deleteEvent(it)
+            }
+            .setNegativeButton(R.string.close, null)
+            .show()
+    }
+
+    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
+
+    private fun deleteEvent(event: Event) {
+        val date = event.date
+        events[date] = events[date].orEmpty().minus(event)
+        updateAdapterForDate(date)
+    }
+
+    private fun updateAdapterForDate(date: LocalDate) {
+        eventsAdapter.apply {
+            events.clear()
+            events.addAll(this@SalaRiunioniActivity.events[date].orEmpty())
+            notifyDataSetChanged()
+        }
+        selectedDateText.setText(selectionFormatter.format(date))
+    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {

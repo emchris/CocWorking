@@ -35,4 +35,7 @@
     <string name="text_rispondi">Comment</string>
     <string name="button_vetrina">Showcase</string>
     <string name="title_vetrina">SHOWCASE</string>
+    <string name="event_dialog_delete">Delete this meeting?</string>
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
 </resources>

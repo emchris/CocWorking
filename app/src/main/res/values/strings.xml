@@ -47,6 +47,7 @@
     <string name="text_lavoro">Lavoro</string>
     <string name="text_sport" translatable="false">Sport</string>
     <string name="text_rispondi">Rispondi</string>
-
-
+    <string name="event_dialog_delete">Cancella questa riunione?</string>
+    <string name="delete">Cancella</string>
+    <string name="close">Chiudi</string>
 </resources>
