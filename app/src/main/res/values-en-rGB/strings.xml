@@ -38,4 +38,7 @@
     <string name="event_dialog_delete">Delete this meeting?</string>
     <string name="delete">Delete</string>
     <string name="close">Close</string>
+    <string name="event_input_dialog_title">Enter event title</string>
+    <string name="save">Save</string>
+    <string name="empty_input_text">Text is empty</string>
 </resources>

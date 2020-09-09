@@ -5,9 +5,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatEditText
 import com.example.cocworking.models.Event
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -25,6 +29,10 @@ import java.util.*
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
+    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
+    private var selectedDate: LocalDate? = null
+
     private val eventsAdapter = EventAdapter {
         AlertDialog.Builder(this)
             .setMessage(R.string.event_dialog_delete)
@@ -35,8 +43,51 @@ class SalaRiunioniActivity : AppCompatActivity() {
             .show()
     }
 
-    private val events = mutableMapOf<LocalDate, List<Event>>()
-    private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
+    private val inputDialog by lazy {
+        val editText = AppCompatEditText(this)
+        val layout = FrameLayout(this).apply {
+            // Setting the padding on the EditText only pads the input area
+            // not the entire EditText so we wrap it in a FrameLayout.
+            val padding = dpToPx(20, context)
+            setPadding(padding, padding, padding, padding)
+            addView(editText, FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ))
+        }
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.event_input_dialog_title))
+            .setView(layout)
+            .setPositiveButton(R.string.save) { _, _ ->
+                saveEvent(editText.text.toString())
+                // Prepare EditText for reuse.
+                editText.setText("")
+            }
+            .setNegativeButton(R.string.close, null)
+            .create()
+            .apply {
+                setOnShowListener {
+                    // Show the keyboard
+                    editText.requestFocus()
+                    context.inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                }
+                setOnDismissListener {
+                    // Hide the keyboard
+                    context.inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+                }
+            }
+    }
+
+    private fun saveEvent(text: String) {
+        if (text.isBlank()) {
+            Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
+        } else {
+            selectedDate?.let {
+                events[it] = events[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
+                updateAdapterForDate(it)
+            }
+        }
+    }
 
     private fun deleteEvent(event: Event) {
         val date = event.date

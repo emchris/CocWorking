@@ -50,4 +50,7 @@
     <string name="event_dialog_delete">Cancella questa riunione?</string>
     <string name="delete">Cancella</string>
     <string name="close">Chiudi</string>
+    <string name="event_input_dialog_title">Nome dell\'evento</string>
+    <string name="save">Salva</string>
+    <string name="empty_input_text">Testo vuoto</string>
 </resources>

@@ -60,7 +60,7 @@
         app:cv_monthHeaderResource="@layout/calendar_header"
         app:cv_orientation="horizontal"
         app:cv_scrollMode="paged"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/selectedDateText"
         app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano" />
 
     <TextView
@@ -78,7 +78,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
         tools:text="7 Jan, 2019"
-        app:layout_constraintBottom_toBottomOf="@id/eventsRv"
+        app:layout_constraintBottom_toTopOf="@id/eventsRv"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <androidx.recyclerview.widget.RecyclerView
