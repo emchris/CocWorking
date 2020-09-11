@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
 import com.example.cocworking.models.Event
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -38,6 +39,8 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
     private val events = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
+
+    private lateinit var binding: ActivitySalaRiunioniBinding
 
     private val eventsAdapter = EventAdapter {
         AlertDialog.Builder(this)
@@ -134,8 +137,24 @@ class SalaRiunioniActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
 
+        val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
+
         initEventRecyclerView()
 
+        class DayViewContainer(view: View) : ViewContainer(view) {
+            val textView = view.calendarDayText
+            lateinit var day: CalendarDay // Will be set when this container is bound.
+            val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
+
+            init {
+                view.setOnClickListener {
+                    if (day.owner == DayOwner.THIS_MONTH) {
+                        selectDate(day.date)
+                    }
+                }
+            }
+        }
+/*
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
 
@@ -151,7 +170,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             // Without the kotlin android extensions plugin:
             //val textView = view.findViewById<TextView>(R.id.calendarDayText)
         }
-
+*/
         if (savedInstanceState == null) {
             calendarView?.post {
                 // Show today's events initially.
