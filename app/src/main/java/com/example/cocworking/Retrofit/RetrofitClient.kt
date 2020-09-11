@@ -7,10 +7,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitClient {
     private var instance: Retrofit?=null //dichiaro un'istanza di tipo Retrofit (?)
-    private const val BASE_URL = "http://10.0.2.2:3000/"
-
+    private const val BASE_URL = "http://10.0.2.2:3000/" //url che va combinato con la parte di url degli
+    //end point a cui riferiscono le fuznioni dell'interfaccia IMyService
     fun getInstance(): Retrofit {
-        if(instance ==null)
+        if(instance == null)
             instance = Retrofit.Builder() //così creo un Retrofit object
                 .baseUrl(BASE_URL) //Localhost will be changed in 10.0.2.2 in Emulator
                 .addConverterFactory(GsonConverterFactory.create())

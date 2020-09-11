@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryGrey">#AEAEAE</color>
+    <color name="colorPrimaryGreyBefore">#CACACA</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorSecondaryDark">#C3C3C3</color>
     <color name="colorBase1">#FF7300</color>
-    <color name="colorBase1Dark">#994500</color>
+    <color name="colorBase1Light">#FBA056</color>
+    <color name="colorBase1Dark">#E86900</color>
     <color name="colorBase2">#00A9BE</color>
-    <color name="colorBase2Light">#8500BCD4</color>
+    <color name="colorBase2Light">#21B3C5</color>
+    <color name="azzurrochiaro">#62C3CF</color>
     <color name="colorBase2Dark">#035a63</color>
     <color name="occupato">#FF0202</color>
     <color name="libero">#93D051</color>
+    <color name="azzurroscuro">#2E6171</color>
+    <color name="azzurroscuroLight">#49A0BC</color>
+    <color name="azzurrospento">#437C90</color>
+    <color name="azzurrospentoLight">#6AC3E3</color>
+    <color name="oldlace">#FFF4E4</color>
+    <color name="oldlaceDark">#FFEED5</color>
+    <color name="yelloworange">#FE9920</color>
 </resources>

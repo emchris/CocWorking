@@ -137,7 +137,7 @@ class LoginActivity: AppCompatActivity() {
 
                 Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
 
-                if (null != response.body()?.flag) {
+                if (0 != response.body()?.flag) {
                     Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
                    /* val key = "IntentFlag"
                     val value = 1
@@ -166,8 +166,6 @@ class LoginActivity: AppCompatActivity() {
 
 
                     }
-                } else {
-                    Toast.makeText(this@LoginActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
                 }
             }
 

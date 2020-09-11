@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Cocò Working</string>
+    <string name="aboutus" translatable="false">Info</string>
     <string name="about_piantina">In questa sezione potrai visionare i nostri uffici e controllare se ci sono ancora postazioni disponibili. Una volta selezionata avrai la possibilità di prenotarla e, se entro 3 giorni passerai in ufficio da noi, la postazione sarà tua.</string>
     <string name="button_bacheca">Bacheca</string>
     <string name="button_eventi">Eventi</string>
