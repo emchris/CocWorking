@@ -12,10 +12,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
+import com.example.cocworking.databinding.CalendarDayLayoutBinding
 import com.example.cocworking.models.Event
 import com.kizitonwose.calendarview.ui.ViewContainer
 import com.kizitonwose.calendarview.ui.DayBinder
@@ -24,6 +26,7 @@ import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
+import kotlinx.android.synthetic.main.calendar_day_layout.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
 import java.time.LocalDate
@@ -43,7 +46,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySalaRiunioniBinding
 
     private val eventsAdapter = EventAdapter {
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
             .setMessage(R.string.event_dialog_delete)
             .setPositiveButton(R.string.delete) { _, _ ->
                 deleteEvent(it)
@@ -64,7 +67,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             ))
         }
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
             .setTitle(getString(R.string.event_input_dialog_title))
             .setView(layout)
             .setPositiveButton(R.string.save) { _, _ ->
@@ -141,15 +144,23 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         initEventRecyclerView()
 
+        if (savedInstanceState == null) {
+            calendarView?.post {
+                // Show today's events initially.
+                selectDate(today)
+            }
+        }
+
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
+            val dotView = view.DotView
             lateinit var day: CalendarDay // Will be set when this container is bound.
-            val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
+            val binding = CalendarDayLayoutBinding.inflate(layoutInflater)
 
             init {
                 view.setOnClickListener {
                     if (day.owner == DayOwner.THIS_MONTH) {
-                        selectDate(day.date)
+                    selectDate(day.date)
                     }
                 }
             }
@@ -171,14 +182,51 @@ class SalaRiunioniActivity : AppCompatActivity() {
             //val textView = view.findViewById<TextView>(R.id.calendarDayText)
         }
 */
-        if (savedInstanceState == null) {
-            calendarView?.post {
-                // Show today's events initially.
-                selectDate(today)
+
+        calendarView?.dayBinder = object : DayBinder<DayViewContainer> {
+            override fun create(view: View) = DayViewContainer(view)
+            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                container.day = day
+                val textView = container.textView
+                val dotView = container.dotView
+
+                textView.text = day.date.dayOfMonth.toString()
+
+                if (day.owner == DayOwner.THIS_MONTH) {
+                    textView.makeVisible()
+                    when (day.date) {
+                        today -> {
+                            textView.setTextColorRes(R.color.colorPrimary)
+                            textView.setBackgroundResource(R.drawable.today_bg)
+                            dotView.makeInVisible()
+                            Log.d("day","1")
+                        }
+                        selectedDate -> {
+                            textView.setTextColorRes(R.color.colorBase2)
+                            textView.setBackgroundResource(R.drawable.selected_bg)
+                            dotView.makeInVisible()
+                            Log.d("day","2")
+                        }
+                        else -> {
+                            textView.setTextColorRes(R.color.colorPrimaryDark)
+                            textView.background = null
+                            if(events[day.date].orEmpty().isNotEmpty()) {
+                                dotView.makeInVisible()
+                                Log.d("day","3")
+                            }
+                            else{dotView.makeInVisible()
+                                Log.d("day","4")}
+                        }
+                    }
+                } else {
+                    textView.makeInVisible()
+                    dotView.makeInVisible()
+                }
             }
         }
 
-        calendarView?.dayBinder = object : DayBinder<DayViewContainer> {
+/*
+        calendarView?.dayBinder = object :DayBinder<DayViewContainer> {
             // Called only when a new container is needed.
             override fun create(view: View) = DayViewContainer(view)
 
@@ -187,6 +235,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 container.textView.text = day.date.dayOfMonth.toString()
             }
         }
+*/
         class MonthViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarHeaderText
         }
@@ -196,6 +245,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 val monthTitle = "${month.yearMonth.month.name.toLowerCase().capitalize()} ${month.year}"
                 container.textView.text = monthTitle
             }
+        }
+
+        AddButton?.setOnClickListener {
+            inputDialog.show()
         }
 
         val currentMonth = YearMonth.now()
