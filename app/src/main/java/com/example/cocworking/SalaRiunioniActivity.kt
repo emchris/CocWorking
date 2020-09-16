@@ -1,5 +1,7 @@
 package com.example.cocworking
 
+import android.annotation.SuppressLint
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -29,6 +31,7 @@ import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -39,6 +42,11 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
+    private val now = Calendar.getInstance()
+
+    private val cal = Calendar.getInstance()
+    @SuppressLint("SimpleDateFormat")
+    private var eventTime = SimpleDateFormat("HH:mm").format(cal.time)
 
     private val events = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
@@ -56,6 +64,8 @@ class SalaRiunioniActivity : AppCompatActivity() {
     }
 
     private val inputDialog by lazy {
+        //val timePicker = TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->  },
+        //now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false)
         val editText = AppCompatEditText(this)
         val layout = FrameLayout(this).apply {
             // Setting the padding on the EditText only pads the input area
@@ -71,7 +81,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             .setTitle(getString(R.string.event_input_dialog_title))
             .setView(layout)
             .setPositiveButton(R.string.save) { _, _ ->
-                saveEvent(editText.text.toString())
+                saveEventTime(editText.text.toString(), eventTime)
                 // Prepare EditText for reuse.
                 editText.setText("")
             }
@@ -97,6 +107,18 @@ class SalaRiunioniActivity : AppCompatActivity() {
             selectedDate?.let {
                 events[it] = events[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
                 updateAdapterForDate(it)
+            }
+        }
+    }
+
+    private fun saveEventTime(text: String, time: String) {
+        if (text.isBlank()) {
+            Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
+        } else {
+            selectedDate?.let {
+                events[it] = events[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
+                updateAdapterForDate(it)
+                Log.d("nuova riunione :", text + time)
             }
         }
     }
@@ -248,7 +270,14 @@ class SalaRiunioniActivity : AppCompatActivity() {
         }
 
         AddButton?.setOnClickListener {
-            inputDialog.show()
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY,hour)
+                cal.set(Calendar.MINUTE, minute)
+                eventTime = SimpleDateFormat("HH:mm").format(cal.time)
+                Log.d("ora riunione: ",eventTime)
+                inputDialog.show()
+            }
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
         val currentMonth = YearMonth.now()
