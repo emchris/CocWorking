@@ -1,5 +1,7 @@
 package com.example.cocworking
 
+import android.annotation.SuppressLint
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -27,8 +29,7 @@ import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import java.time.LocalDate
-import java.time.YearMonth
+import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
@@ -41,24 +42,29 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private var augurimamma = "auguri mamma"
     private var augurinonna = "augurinonna"
     private var augurizia = "augurizia"
-    private var oggi = LocalDate.parse("2020-09-17")
-    private var domani = LocalDate.parse("2020-09-18")
+    private val defaultUserId: String = "user0"
 
-    private var eventmap = mutableMapOf<LocalDate, List<Event>>()
+    //private var eventmap = mutableMapOf<LocalDate, List<Event>>()
 
     var eventi: List<Event> = emptyList()
 
-    val evento : Event = Event(UUID.randomUUID().toString(), augurinonna, oggi)
+    private val now = Calendar.getInstance()
 
+    private val cal = Calendar.getInstance()
+    private var eventTime: LocalTime = LocalTime.now()
+
+    private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
+    private var domani = LocalDateTime.of(LocalDate.parse("2020-09-18"), eventTime)
+
+    val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
+
+    private var eventmap = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
 
     private lateinit var binding: ActivitySalaRiunioniBinding
 
-    //val e : Map<LocalDate, List<Event>> = eventi.stream().collect(Collectors.groupingBy(Event::date, Collectors.toCollection()))
-
-
     private val eventsAdapter = EventAdapter {
-        AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
+        AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog)
             .setMessage(R.string.event_dialog_delete)
             .setPositiveButton(R.string.delete) { _, _ ->
                 deleteEvent(it)
@@ -68,6 +74,8 @@ class SalaRiunioniActivity : AppCompatActivity() {
     }
 
     private val inputDialog by lazy {
+        //val timePicker = TimePickerDialog(this,TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->  },
+        //now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), false)
         val editText = AppCompatEditText(this)
         val layout = FrameLayout(this).apply {
             // Setting the padding on the EditText only pads the input area
@@ -79,14 +87,11 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             ))
         }
-
-
-
         AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
             .setTitle(getString(R.string.event_input_dialog_title))
             .setView(layout)
             .setPositiveButton(R.string.save) { _, _ ->
-                saveEvent(editText.text.toString())
+                saveEvent(editText.text.toString(), eventTime)
                 // Prepare EditText for reuse.
                 editText.setText("")
             }
@@ -105,65 +110,44 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
     }
 
-
-    private fun saveEvent(text: String) {
-        if (text.isBlank()) {
-            Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
-        } else {
-            selectedDate?.let {
-                eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
-                Log.d(text, "testo evento")
-                Log.d(it.toString(), "data evento")
-                //Log.d(oggi.toString(), "data odierna")
-                updateAdapterForDate(it)
+    private fun saveEvent(text: String, time: LocalTime) {
+            if (text.isBlank()) {
+                Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
+            } else {
+                selectedDate?.let {
+                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
+                    updateAdapterForDate(it)
+                }
             }
         }
-    }
 
-
-    private fun deleteEvent(event: Event) {
-        val date = event.date
-        eventmap[date] = eventmap[date].orEmpty().minus(event)
-        updateAdapterForDate(date)
-    }
-
-    private fun updateAdapterForDate(date: LocalDate) {
-        eventsAdapter.apply {
-            events.clear()
-            /*if(eventi[date]?.size != 0){
-                events.addAll(this@SalaRiunioniActivity.eventi[date].orEmpty())
-                eventi.clear();
-            }*/
-            //Log.d(this@SalaRiunioniActivity.events[date]?.single().toString(), "dimensione lista")
-            //this@SalaRiunioniActivity.events[date]?.plus(eventi[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurinonna, oggi)))
-            this@SalaRiunioniActivity.eventmap[date]?.stream()
-                ?.distinct()
-                ?.collect(Collectors.toList())
-            Log.d(this@SalaRiunioniActivity.eventmap[date]?.size.toString(), "dimensione lista")
-            events.addAll(this@SalaRiunioniActivity.eventmap[date].orEmpty())
-            notifyDataSetChanged()
+        private fun deleteEvent(event: Event) {
+            val date = event.date
+            eventmap[date.toLocalDate()] = eventmap[date].orEmpty().minus(event)
+            updateAdapterForDate(date.toLocalDate())
         }
-        selectedDateText?.text = selectionFormatter.format(date)
-    }
 
-    private fun updateAdapterForCalendar(date: LocalDate) {
-        eventsAdapter.apply {
-            events.clear()
-            //events.addAll(this@SalaRiunioniActivity.events[date].orEmpty())
-            //events.addAll(this@SalaRiunioniActivity.eventi[date].orEmpty())
-            notifyDataSetChanged()
+        private fun updateAdapterForDate(date: LocalDate) {
+            eventsAdapter.apply {
+                events.clear()
+                this@SalaRiunioniActivity.eventmap[date]?.stream()
+                    ?.distinct()
+                    ?.collect(Collectors.toList())
+                Log.d(this@SalaRiunioniActivity.eventmap[date]?.size.toString(), "dimensione lista")
+                events.addAll(this@SalaRiunioniActivity.eventmap[date].orEmpty())
+                notifyDataSetChanged()
+            }
+            selectedDateText?.text = selectionFormatter.format(date)
         }
-        selectedDateText?.text = selectionFormatter.format(date)
-    }
 
-    private fun selectDate(date: LocalDate) {
-        if (selectedDate != date) {
-            val oldDate = selectedDate
-            selectedDate = date
-            oldDate?.let { calendarView?.notifyDateChanged(it) }
-            calendarView?.notifyDateChanged(date)
-            updateAdapterForDate(date)
-        }
+        private fun selectDate(date: LocalDate) {
+            if (selectedDate != date) {
+                val oldDate = selectedDate
+                selectedDate = date
+                oldDate?.let { calendarView?.notifyDateChanged(it) }
+                calendarView?.notifyDateChanged(date)
+                updateAdapterForDate(date)
+            }
     }
 
     private fun initEventRecyclerView(){
@@ -174,12 +158,12 @@ class SalaRiunioniActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NewApi")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
-
 
         val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
 
@@ -206,23 +190,6 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 }
             }
         }
-/*
-        class DayViewContainer(view: View) : ViewContainer(view) {
-            val textView = view.calendarDayText
-
-            lateinit var day: CalendarDay // Will be set when this container is bound.
-            init {
-                view.setOnClickListener {
-                    if (day.owner == DayOwner.THIS_MONTH) {
-                        selectDate(day.date)
-                    }
-                }
-            }
-
-            // Without the kotlin android extensions plugin:
-            //val textView = view.findViewById<TextView>(R.id.calendarDayText)
-        }
-*/
 
         calendarView?.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
@@ -240,23 +207,20 @@ class SalaRiunioniActivity : AppCompatActivity() {
                             textView.setTextColorRes(R.color.colorPrimary)
                             textView.setBackgroundResource(R.drawable.today_bg)
                             dotView.makeInVisible()
-                            Log.d("day","1")
                         }
                         selectedDate -> {
                             textView.setTextColorRes(R.color.colorBase2)
                             textView.setBackgroundResource(R.drawable.selected_bg)
                             dotView.makeInVisible()
-                            Log.d("day","2")
                         }
                         else -> {
                             textView.setTextColorRes(R.color.colorPrimaryDark)
                             textView.background = null
                             if(eventmap[day.date].orEmpty().isNotEmpty()) {
                                 dotView.makeInVisible()
-                                Log.d("day","3")
                             }
                             else{dotView.makeInVisible()
-                                Log.d("day","4")}
+                            }
                         }
                     }
                 } else {
@@ -266,17 +230,6 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
-/*
-        calendarView?.dayBinder = object :DayBinder<DayViewContainer> {
-            // Called only when a new container is needed.
-            override fun create(view: View) = DayViewContainer(view)
-
-            // Called every time we need to reuse a container.
-            override fun bind(container: DayViewContainer, day: CalendarDay) {
-                container.textView.text = day.date.dayOfMonth.toString()
-            }
-        }
-*/
         class MonthViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarHeaderText
         }
@@ -288,32 +241,23 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
-
         eventi.toMutableList().add(evento)
-        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), augurimamma, oggi))
-        eventi.plusElement(Event(UUID.randomUUID().toString(), augurizia, domani))
+        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
+        eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
 
         Log.d(eventi.size.toString(), "dimensione lista eventi")
 
-        eventmap = eventi.groupBy { it.date }.toMutableMap()
+        eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
         Log.d(eventmap.size.toString(), "dimensione mappa")
 
-        //val e : Map<LocalDate, List<Event>> = eventi.stream().collect(Collectors.groupingBy(Event::date, Collectors.toCollection()))
-        //val events : Map<LocalDate, List<Event>> = eventi.groupBy { it.date }
-
-        /*events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurinonna, oggi))
-        events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurimamma, oggi))
-        events[domani] = events[domani].orEmpty().plus(Event(UUID.randomUUID().toString(), augurizia, domani))*/
-
-
         AddButton?.setOnClickListener {
-            /*if(events[oggi]?.size != 0){
-                updateAdapterForDate(oggi)
-                events.clear();
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY,hour)
+                cal.set(Calendar.MINUTE, minute)
+                eventTime = LocalDateTime.ofInstant(cal.toInstant(), cal.timeZone.toZoneId()).toLocalTime()
+                inputDialog.show()
             }
-            events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), auguri, oggi))
-            updateAdapterForDate(oggi)*/
-            inputDialog.show()
+            TimePickerDialog(this, R.style.Theme_MaterialComponents_Dialog,timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
         val currentMonth = YearMonth.now()
