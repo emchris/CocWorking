@@ -1,4 +1,4 @@
-package com.example.cocworking;
+/*package com.example.cocworking;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -56,4 +56,4 @@ class DBOpenHelper extends SQLiteOpenHelper {
         return database.query(DBStructure.EVENT_TABLE_NAME, Projections, Selection, SelectionArgs, null, null, null);
     }
 
-}
+}*/

@@ -1,5 +1,6 @@
 package com.example.cocworking.Retrofit
 
+import com.example.cocworking.models.Event
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Field
@@ -18,4 +19,10 @@ interface IMyService { //in questa interfaccia definisco tutte le api calls, fac
     @FormUrlEncoded
     fun loginUser(@Field("email") email: String,
                   @Field("password") password: String) : Call<DefaultResponse>
+
+    @POST("updateEvents")
+    @FormUrlEncoded
+    fun updateEvents(@Field("id") id: String,
+                     @Field("name") name: List<Event>,
+                     @Field("password") password: String) : Call<String>
 }
