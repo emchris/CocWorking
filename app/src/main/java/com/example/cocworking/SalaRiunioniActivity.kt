@@ -12,7 +12,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,6 @@ import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
-import kotlinx.android.synthetic.main.calendar_day_layout.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
 import java.time.LocalDate
@@ -34,16 +32,30 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
+import java.util.stream.Collectors
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
+    private var augurimamma = "auguri mamma"
+    private var augurinonna = "augurinonna"
+    private var augurizia = "augurizia"
+    private var oggi = LocalDate.parse("2020-09-17")
+    private var domani = LocalDate.parse("2020-09-18")
 
-    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private var eventmap = mutableMapOf<LocalDate, List<Event>>()
+
+    var eventi: List<Event> = emptyList()
+
+    val evento : Event = Event(UUID.randomUUID().toString(), augurinonna, oggi)
+
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
 
     private lateinit var binding: ActivitySalaRiunioniBinding
+
+    //val e : Map<LocalDate, List<Event>> = eventi.stream().collect(Collectors.groupingBy(Event::date, Collectors.toCollection()))
+
 
     private val eventsAdapter = EventAdapter {
         AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
@@ -67,6 +79,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             ))
         }
+
+
+
         AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
             .setTitle(getString(R.string.event_input_dialog_title))
             .setView(layout)
@@ -90,27 +105,52 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
     }
 
+
     private fun saveEvent(text: String) {
         if (text.isBlank()) {
             Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
         } else {
             selectedDate?.let {
-                events[it] = events[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
+                eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), text, it))
+                Log.d(text, "testo evento")
+                Log.d(it.toString(), "data evento")
+                //Log.d(oggi.toString(), "data odierna")
                 updateAdapterForDate(it)
             }
         }
     }
 
+
     private fun deleteEvent(event: Event) {
         val date = event.date
-        events[date] = events[date].orEmpty().minus(event)
+        eventmap[date] = eventmap[date].orEmpty().minus(event)
         updateAdapterForDate(date)
     }
 
     private fun updateAdapterForDate(date: LocalDate) {
         eventsAdapter.apply {
             events.clear()
-            events.addAll(this@SalaRiunioniActivity.events[date].orEmpty())
+            /*if(eventi[date]?.size != 0){
+                events.addAll(this@SalaRiunioniActivity.eventi[date].orEmpty())
+                eventi.clear();
+            }*/
+            //Log.d(this@SalaRiunioniActivity.events[date]?.single().toString(), "dimensione lista")
+            //this@SalaRiunioniActivity.events[date]?.plus(eventi[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurinonna, oggi)))
+            this@SalaRiunioniActivity.eventmap[date]?.stream()
+                ?.distinct()
+                ?.collect(Collectors.toList())
+            Log.d(this@SalaRiunioniActivity.eventmap[date]?.size.toString(), "dimensione lista")
+            events.addAll(this@SalaRiunioniActivity.eventmap[date].orEmpty())
+            notifyDataSetChanged()
+        }
+        selectedDateText?.text = selectionFormatter.format(date)
+    }
+
+    private fun updateAdapterForCalendar(date: LocalDate) {
+        eventsAdapter.apply {
+            events.clear()
+            //events.addAll(this@SalaRiunioniActivity.events[date].orEmpty())
+            //events.addAll(this@SalaRiunioniActivity.eventi[date].orEmpty())
             notifyDataSetChanged()
         }
         selectedDateText?.text = selectionFormatter.format(date)
@@ -139,6 +179,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
+
 
         val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
 
@@ -210,7 +251,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                         else -> {
                             textView.setTextColorRes(R.color.colorPrimaryDark)
                             textView.background = null
-                            if(events[day.date].orEmpty().isNotEmpty()) {
+                            if(eventmap[day.date].orEmpty().isNotEmpty()) {
                                 dotView.makeInVisible()
                                 Log.d("day","3")
                             }
@@ -247,7 +288,31 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
+
+        eventi.toMutableList().add(evento)
+        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), augurimamma, oggi))
+        eventi.plusElement(Event(UUID.randomUUID().toString(), augurizia, domani))
+
+        Log.d(eventi.size.toString(), "dimensione lista eventi")
+
+        eventmap = eventi.groupBy { it.date }.toMutableMap()
+        Log.d(eventmap.size.toString(), "dimensione mappa")
+
+        //val e : Map<LocalDate, List<Event>> = eventi.stream().collect(Collectors.groupingBy(Event::date, Collectors.toCollection()))
+        //val events : Map<LocalDate, List<Event>> = eventi.groupBy { it.date }
+
+        /*events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurinonna, oggi))
+        events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), augurimamma, oggi))
+        events[domani] = events[domani].orEmpty().plus(Event(UUID.randomUUID().toString(), augurizia, domani))*/
+
+
         AddButton?.setOnClickListener {
+            /*if(events[oggi]?.size != 0){
+                updateAdapterForDate(oggi)
+                events.clear();
+            }
+            events[oggi] = events[oggi].orEmpty().plus(Event(UUID.randomUUID().toString(), auguri, oggi))
+            updateAdapterForDate(oggi)*/
             inputDialog.show()
         }
 
