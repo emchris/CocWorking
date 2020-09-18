@@ -47,6 +47,7 @@ class EventAdapter(val onClick: (Event) -> Unit) :
     ): RecyclerView.ViewHolder(eventView){
 
         val itemEventText =  eventView.itemEventText
+        val itemEventTime = eventView.itemEventTime
 
         init {
             itemView.setOnClickListener {
@@ -56,6 +57,7 @@ class EventAdapter(val onClick: (Event) -> Unit) :
 
         fun bind(event: Event) {
             itemEventText.setText(event.text)
+            itemEventTime.setText(event.date.hour.toString()+":"+event.date.minute.toString())
         }
     }
 }
