@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,27 +27,38 @@ import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
-import kotlinx.android.synthetic.main.calendar_day_layout.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import java.text.SimpleDateFormat
 import java.time.*
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
+import java.util.stream.Collectors
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
-    private val now = Calendar.getInstance()
-
+    private var augurimamma = "auguri mamma"
+    private var augurinonna = "augurinonna"
+    private var augurizia = "augurizia"
     private val defaultUserId: String = "user0"
+
+    //private var eventmap = mutableMapOf<LocalDate, List<Event>>()
+
+    var eventi: List<Event> = emptyList()
+
+    private val now = Calendar.getInstance()
 
     private val cal = Calendar.getInstance()
     private var eventTime: LocalTime = LocalTime.now()
 
-    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
+    private var domani = LocalDateTime.of(LocalDate.parse("2020-09-18"), eventTime)
+
+    val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
+
+    private var eventmap = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
 
     private lateinit var binding: ActivitySalaRiunioniBinding
@@ -105,7 +115,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
             } else {
                 selectedDate?.let {
-                    events[it] = events[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
+                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
                     updateAdapterForDate(it)
                 }
             }
@@ -113,14 +123,18 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         private fun deleteEvent(event: Event) {
             val date = event.date
-            events[date.toLocalDate()] = events[date].orEmpty().minus(event)
+            eventmap[date.toLocalDate()] = eventmap[date].orEmpty().minus(event)
             updateAdapterForDate(date.toLocalDate())
         }
 
         private fun updateAdapterForDate(date: LocalDate) {
             eventsAdapter.apply {
                 events.clear()
-                events.addAll(this@SalaRiunioniActivity.events[date].orEmpty())
+                this@SalaRiunioniActivity.eventmap[date]?.stream()
+                    ?.distinct()
+                    ?.collect(Collectors.toList())
+                Log.d(this@SalaRiunioniActivity.eventmap[date]?.size.toString(), "dimensione lista")
+                events.addAll(this@SalaRiunioniActivity.eventmap[date].orEmpty())
                 notifyDataSetChanged()
             }
             selectedDateText?.text = selectionFormatter.format(date)
@@ -202,7 +216,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                         else -> {
                             textView.setTextColorRes(R.color.colorPrimaryDark)
                             textView.background = null
-                            if(events[day.date].orEmpty().isNotEmpty()) {
+                            if(eventmap[day.date].orEmpty().isNotEmpty()) {
                                 dotView.makeInVisible()
                             }
                             else{dotView.makeInVisible()
@@ -226,6 +240,15 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 container.textView.text = monthTitle
             }
         }
+
+        eventi.toMutableList().add(evento)
+        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
+        eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
+
+        Log.d(eventi.size.toString(), "dimensione lista eventi")
+
+        eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
+        Log.d(eventmap.size.toString(), "dimensione mappa")
 
         AddButton?.setOnClickListener {
             val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
