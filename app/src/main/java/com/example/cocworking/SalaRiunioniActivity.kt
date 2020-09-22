@@ -5,8 +5,11 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.*
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -17,26 +20,39 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cocworking.Retrofit.EventsUpdated
+import com.example.cocworking.Retrofit.IMyService //Retrofit è una libreria per gestire le richieste http in applicazioni android
+import com.example.cocworking.Retrofit.RetrofitClient
+import com.example.cocworking.Retrofit.RetrofitClient2
 import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
 import com.example.cocworking.databinding.CalendarDayLayoutBinding
 import com.example.cocworking.models.Event
-import com.kizitonwose.calendarview.ui.ViewContainer
-import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
+import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
+import com.kizitonwose.calendarview.ui.ViewContainer
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import java.time.*
+import okhttp3.internal.annotations.EverythingIsNonNull
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.temporal.WeekFields
 import java.util.*
 import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
+    lateinit var iMyService : IMyService
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
     private var augurimamma = "auguri mamma"
@@ -116,6 +132,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             } else {
                 selectedDate?.let {
                     eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
+                    updateEvents(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time))
                     updateAdapterForDate(it)
                 }
             }
@@ -123,7 +140,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         private fun deleteEvent(event: Event) {
             val date = event.date
-            eventmap[date.toLocalDate()] = eventmap[date].orEmpty().minus(event)
+            eventmap[date.toLocalDate()] = eventmap.getValue(date.toLocalDate()).orEmpty().minus(event)
             updateAdapterForDate(date.toLocalDate())
         }
 
@@ -169,12 +186,16 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         initEventRecyclerView()
 
+        val retrofit = RetrofitClient.getInstance() //salvo nella variabile retrofit l'istanza ritornata dalla funzione getInsance dell'oggetto RetrofitClient
+        iMyService = retrofit.create(IMyService::class.java)
+
         if (savedInstanceState == null) {
             calendarView?.post {
                 // Show today's events initially.
                 selectDate(today)
             }
         }
+
 
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
@@ -241,6 +262,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
+        takeEvents("ada")
         eventi.toMutableList().add(evento)
         eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
         eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
@@ -267,6 +289,47 @@ class SalaRiunioniActivity : AppCompatActivity() {
         calendarView?.setup(firstMonth, lastMonth, firstDayOfWeek)
         calendarView?.scrollToMonth(currentMonth)
         Log.d("CALENDAR_CREATION","$currentMonth \n $firstMonth \n $lastMonth \n $firstDayOfWeek")
+    }
+
+    private fun updateEvents(eventId: String, userId: String, text: String, date:LocalDateTime) {
+
+        iMyService.updateEvents(eventId , userId, text, date).enqueue(object :
+            Callback<String> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+    }
+
+    private fun takeEvents(userId: String) {
+
+        RetrofitClient2.instance.takeEvents(userId).enqueue(object :
+            Callback<List<EventsUpdated>> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<List<EventsUpdated>>, t: Throwable) {
+                Log.d("errore", t.message)
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error", Toast.LENGTH_SHORT)
+                    .show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<List<EventsUpdated>>, response: Response<List<EventsUpdated>>) {
+                val prova = response.body()
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Log.d("ricevo questo", prova?.get(1)?.toString())
+                //response.body()?.forEach { e ->  eventi.toMutableList().add(Event(e[0], e.userId, e.text, e.date))}
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
