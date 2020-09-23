@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cocworking.Retrofit.EventsUpdated
-import com.example.cocworking.Retrofit.IMyService //Retrofit è una libreria per gestire le richieste http in applicazioni android
+import com.example.cocworking.Retrofit.IMyService
 import com.example.cocworking.Retrofit.RetrofitClient
 import com.example.cocworking.Retrofit.RetrofitClient2
 import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
@@ -36,7 +36,6 @@ import com.kizitonwose.calendarview.ui.ViewContainer
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import okhttp3.internal.annotations.EverythingIsNonNull
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,10 +44,11 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.time.temporal.WeekFields
 import java.util.*
 import java.util.stream.Collectors
-import kotlin.collections.ArrayList
+import javax.xml.datatype.DatatypeConstants.MINUTES
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
@@ -69,10 +69,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private val cal = Calendar.getInstance()
     private var eventTime: LocalTime = LocalTime.now()
 
-    private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
+    //private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
     private var domani = LocalDateTime.of(LocalDate.parse("2020-09-18"), eventTime)
 
-    val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
+    //val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
 
     private var eventmap = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
@@ -131,8 +131,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
             } else {
                 selectedDate?.let {
-                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
-                    updateEvents(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time))
+                    Log.d("time", time.toString())
+
+                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES))))
+                    updateEvents(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES)))
                     updateAdapterForDate(it)
                 }
             }
@@ -263,14 +265,14 @@ class SalaRiunioniActivity : AppCompatActivity() {
         }
 
         takeEvents("ada")
-        eventi.toMutableList().add(evento)
-        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
-        eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
+        //eventi.toMutableList().add(evento)
+        //eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
+        //eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
 
-        Log.d(eventi.size.toString(), "dimensione lista eventi")
+        /*Log.d(eventi.size.toString(), "dimensione lista eventi")
 
         eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
-        Log.d(eventmap.size.toString(), "dimensione mappa")
+        Log.d(eventmap.size.toString(), "dimensione mappa")*/
 
         AddButton?.setOnClickListener {
             val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
@@ -321,9 +323,17 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<EventsUpdated>>, response: Response<List<EventsUpdated>>) {
-                val prova = response.body()
+                val updated = response.body()
+               // updated?.forEach( {e => eventi.orEmpty().plusElement(Event(e.eventId, e.userId, e.text, e.date.toLocalDateTime))})
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+                updated?.forEach{eventi += Event(it.userId, it.eventId, it.text, LocalDateTime.parse(it.date, formatter))}
+                Log.d(eventi.size.toString(), "dimensione lista eventi")
+                eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
+                Log.d(eventmap.size.toString(), "dimensione mappa")
+                Log.d("ricevo questo", response.body().toString())
                 //Log.d("ricevo questo", response.body()?.get(1).toString())
-                Log.d("ricevo questo", prova?.get(1)?.toString())
+                //Log.d("ricevo questo", eventi?.get(1)?.toString())
+
                 //response.body()?.forEach { e ->  eventi.toMutableList().add(Event(e[0], e.userId, e.text, e.date))}
                 Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT)
                     .show()
