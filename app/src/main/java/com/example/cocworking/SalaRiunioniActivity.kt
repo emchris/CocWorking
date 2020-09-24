@@ -5,8 +5,11 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.*
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -17,32 +20,45 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cocworking.Retrofit.EventsUpdated
+import com.example.cocworking.Retrofit.IMyService
+import com.example.cocworking.Retrofit.RetrofitClient
+import com.example.cocworking.Retrofit.RetrofitClient2
 import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
 import com.example.cocworking.databinding.CalendarDayLayoutBinding
 import com.example.cocworking.models.Event
-import com.kizitonwose.calendarview.ui.ViewContainer
-import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
+import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
+import com.kizitonwose.calendarview.ui.ViewContainer
 import kotlinx.android.synthetic.main.activity_sala_riunioni.*
 import kotlinx.android.synthetic.main.calendar_day_layout.view.*
 import kotlinx.android.synthetic.main.calendar_header.view.*
-import java.time.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.time.temporal.WeekFields
 import java.util.*
 import java.util.stream.Collectors
+import javax.xml.datatype.DatatypeConstants.MINUTES
 
 class SalaRiunioniActivity : AppCompatActivity() {
 
+    lateinit var iMyService : IMyService
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
     private var augurimamma = "auguri mamma"
     private var augurinonna = "augurinonna"
     private var augurizia = "augurizia"
-    private val defaultUserId: String = "user0"
+    private var defaultUserId: String? = ""
 
     //private var eventmap = mutableMapOf<LocalDate, List<Event>>()
 
@@ -53,10 +69,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private val cal = Calendar.getInstance()
     private var eventTime: LocalTime = LocalTime.now()
 
-    private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
+    //private var oggi = LocalDateTime.of(LocalDate.parse("2020-09-17"), eventTime)
     private var domani = LocalDateTime.of(LocalDate.parse("2020-09-18"), eventTime)
 
-    val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
+    //val evento : Event = Event(UUID.randomUUID().toString(), defaultUserId, augurinonna, oggi)
 
     private var eventmap = mutableMapOf<LocalDate, List<Event>>()
     private val selectionFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
@@ -67,7 +83,11 @@ class SalaRiunioniActivity : AppCompatActivity() {
         AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog)
             .setMessage(R.string.event_dialog_delete)
             .setPositiveButton(R.string.delete) { _, _ ->
-                deleteEvent(it)
+                if(it.userId == defaultUserId) {
+                    deleteEvent(it)
+                } else {
+                    Toast.makeText(this@SalaRiunioniActivity, "Impossibile eliminare evento" + it.userId + defaultUserId , Toast.LENGTH_SHORT).show()
+                }
             }
             .setNegativeButton(R.string.close, null)
             .show()
@@ -115,7 +135,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.empty_input_text, Toast.LENGTH_LONG).show()
             } else {
                 selectedDate?.let {
-                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time)))
+                    Log.d("time", time.toString())
+
+                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES))))
+                    updateEvents(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES)))
                     updateAdapterForDate(it)
                 }
             }
@@ -124,6 +147,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
         private fun deleteEvent(event: Event) {
             val date = event.date
             eventmap[date.toLocalDate()] = eventmap[date.toLocalDate()].orEmpty().minus(event)
+            Log.d("mappa eventi", eventmap.toString())
+            eventmap[date.toLocalDate()] = eventmap.getValue(date.toLocalDate()).orEmpty().minus(event)
+            deleteEvents(event.eventId,event.userId,event.text,event.date)
             updateAdapterForDate(date.toLocalDate())
         }
 
@@ -165,9 +191,15 @@ class SalaRiunioniActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
 
+        val mypreference = MyPreference(this)
+        defaultUserId = mypreference.getAccountInfo()
+
         val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
 
         initEventRecyclerView()
+
+        val retrofit = RetrofitClient.getInstance() //salvo nella variabile retrofit l'istanza ritornata dalla funzione getInsance dell'oggetto RetrofitClient
+        iMyService = retrofit.create(IMyService::class.java)
 
         if (savedInstanceState == null) {
             calendarView?.post {
@@ -175,6 +207,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 selectDate(today)
             }
         }
+
 
         class DayViewContainer(view: View) : ViewContainer(view) {
             val textView = view.calendarDayText
@@ -241,14 +274,15 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
-        eventi.toMutableList().add(evento)
-        eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
-        eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
+        takeEvents("ada")
+        //eventi.toMutableList().add(evento)
+        //eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
+        //eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
 
-        Log.d(eventi.size.toString(), "dimensione lista eventi")
+        /*Log.d(eventi.size.toString(), "dimensione lista eventi")
 
         eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
-        Log.d(eventmap.size.toString(), "dimensione mappa")
+        Log.d(eventmap.size.toString(), "dimensione mappa")*/
 
         AddButton?.setOnClickListener {
             val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
@@ -267,6 +301,75 @@ class SalaRiunioniActivity : AppCompatActivity() {
         calendarView?.setup(firstMonth, lastMonth, firstDayOfWeek)
         calendarView?.scrollToMonth(currentMonth)
         Log.d("CALENDAR_CREATION","$currentMonth \n $firstMonth \n $lastMonth \n $firstDayOfWeek")
+    }
+
+    private fun updateEvents(eventId: String, userId: String?, text: String, date:LocalDateTime) {
+
+        iMyService.updateEvents(eventId , userId, text, date).enqueue(object :
+            Callback<String> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+    }
+
+    private fun takeEvents(userId: String) {
+
+        RetrofitClient2.instance.takeEvents(userId).enqueue(object :
+            Callback<List<EventsUpdated>> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<List<EventsUpdated>>, t: Throwable) {
+                Log.d("errore", t.message)
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error", Toast.LENGTH_SHORT)
+                    .show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<List<EventsUpdated>>, response: Response<List<EventsUpdated>>) {
+                val updated = response.body()
+               // updated?.forEach( {e => eventi.orEmpty().plusElement(Event(e.eventId, e.userId, e.text, e.date.toLocalDateTime))})
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}
+                Log.d(eventi.size.toString(), "dimensione lista eventi")
+                eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
+                Log.d(eventmap.size.toString(), "dimensione mappa")
+                Log.d("ricevo questo", response.body().toString())
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                //Log.d("ricevo questo", eventi?.get(1)?.toString())
+
+                //response.body()?.forEach { e ->  eventi.toMutableList().add(Event(e[0], e.userId, e.text, e.date))}
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        })
+    }
+
+    private fun deleteEvents(eventId: String, userId: String?, text: String, date:LocalDateTime) {
+
+        Log.d("messaggio","sono entrato")
+
+        iMyService.deleteEvents(eventId , userId, text, date).enqueue(object :
+            Callback<String> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {

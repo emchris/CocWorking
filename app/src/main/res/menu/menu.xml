@@ -26,6 +26,10 @@
         android:title="Impostazioni"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/esci"
+        android:title="Esci"
+        app:showAsAction="never" />
 
 
 

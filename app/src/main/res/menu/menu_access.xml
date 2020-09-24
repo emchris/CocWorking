@@ -13,5 +13,9 @@
         android:icon="@drawable/icon_home_orange"
         android:title="Home"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/esci"
+        android:title="Esci"
+        app:showAsAction="never" />
 
 </menu>
