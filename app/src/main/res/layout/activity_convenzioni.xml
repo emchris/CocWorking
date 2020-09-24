@@ -21,14 +21,14 @@
 
     <TextView
         android:id="@+id/text_convenzioni"
-        android:layout_width="162dp"
+        android:layout_width="262dp"
         android:layout_height="53dp"
         android:gravity="center_horizontal"
         android:text="@string/title_vetrina"
         android:textColor="@color/colorPrimary"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:fontFamily="@font/amatic_sc"
+        app:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
