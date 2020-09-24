@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="button_bacheca">Showcase</string>
+    <string name="button_bacheca">Board</string>
     <string name="seleziona">Select the plant:</string>
     <string name="title_piantina">PLAN</string>
     <string name="button_piantina">Plan</string>
@@ -41,4 +41,8 @@
     <string name="event_input_dialog_title">Enter event title</string>
     <string name="save">Save</string>
     <string name="empty_input_text">Text is empty</string>
+    <string name="title_registration">Registration</string>
+    <string name="registration_description">Please fill all fields</string>
+    <string name="registration_cancel_BT">Cancel</string>
+    <string name="registration_Reg_BT">REGISTER</string>
 </resources>
