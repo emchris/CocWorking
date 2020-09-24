@@ -123,7 +123,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         private fun deleteEvent(event: Event) {
             val date = event.date
-            eventmap[date.toLocalDate()] = eventmap[date].orEmpty().minus(event)
+            eventmap[date.toLocalDate()] = eventmap[date.toLocalDate()].orEmpty().minus(event)
             updateAdapterForDate(date.toLocalDate())
         }
 
