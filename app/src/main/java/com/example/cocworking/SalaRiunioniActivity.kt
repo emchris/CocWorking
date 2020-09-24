@@ -58,7 +58,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private var augurimamma = "auguri mamma"
     private var augurinonna = "augurinonna"
     private var augurizia = "augurizia"
-    private val defaultUserId: String = "user0"
+    private var defaultUserId: String? = ""
 
     //private var eventmap = mutableMapOf<LocalDate, List<Event>>()
 
@@ -83,7 +83,11 @@ class SalaRiunioniActivity : AppCompatActivity() {
         AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog)
             .setMessage(R.string.event_dialog_delete)
             .setPositiveButton(R.string.delete) { _, _ ->
-                deleteEvent(it)
+                if(it.userId == defaultUserId) {
+                    deleteEvent(it)
+                } else {
+                    Toast.makeText(this@SalaRiunioniActivity, "Impossibile eliminare evento" + it.userId + defaultUserId , Toast.LENGTH_SHORT).show()
+                }
             }
             .setNegativeButton(R.string.close, null)
             .show()
@@ -142,7 +146,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         private fun deleteEvent(event: Event) {
             val date = event.date
+            Log.d("mappa eventi", eventmap.toString())
             eventmap[date.toLocalDate()] = eventmap.getValue(date.toLocalDate()).orEmpty().minus(event)
+            deleteEvents(event.eventId,event.userId,event.text,event.date)
             updateAdapterForDate(date.toLocalDate())
         }
 
@@ -183,6 +189,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sala_riunioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
+
+        val mypreference = MyPreference(this)
+        defaultUserId = mypreference.getAccountInfo()
 
         val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
 
@@ -293,7 +302,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
         Log.d("CALENDAR_CREATION","$currentMonth \n $firstMonth \n $lastMonth \n $firstDayOfWeek")
     }
 
-    private fun updateEvents(eventId: String, userId: String, text: String, date:LocalDateTime) {
+    private fun updateEvents(eventId: String, userId: String?, text: String, date:LocalDateTime) {
 
         iMyService.updateEvents(eventId , userId, text, date).enqueue(object :
             Callback<String> { //enqueue è un metodo che serve per lanciare la Call
@@ -326,7 +335,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 val updated = response.body()
                // updated?.forEach( {e => eventi.orEmpty().plusElement(Event(e.eventId, e.userId, e.text, e.date.toLocalDateTime))})
                 val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
-                updated?.forEach{eventi += Event(it.userId, it.eventId, it.text, LocalDateTime.parse(it.date, formatter))}
+                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}
                 Log.d(eventi.size.toString(), "dimensione lista eventi")
                 eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
                 Log.d(eventmap.size.toString(), "dimensione mappa")
@@ -340,6 +349,26 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun deleteEvents(eventId: String, userId: String?, text: String, date:LocalDateTime) {
+
+        Log.d("messaggio","sono entrato")
+
+        iMyService.deleteEvents(eventId , userId, text, date).enqueue(object :
+            Callback<String> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {

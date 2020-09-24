@@ -25,6 +25,11 @@
 
         />
 
+    <item
+        android:id="@+id/esci"
+        android:title="Esci"
+        app:showAsAction="never" />
+
 
 
 </menu>
