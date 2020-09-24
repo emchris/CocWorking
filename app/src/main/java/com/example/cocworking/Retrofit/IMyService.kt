@@ -24,12 +24,19 @@ interface IMyService { //in questa interfaccia definisco tutte le api calls, fac
     @POST("updateEvents")
     @FormUrlEncoded
     fun updateEvents(@Field("eventId") eventId: String,
-                     @Field("userId") userId: String,
+                     @Field("userId") userId: String?,
                      @Field("text") text: String,
                      @Field("date") date: LocalDateTime) : Call<String>
 
     @POST("takeEvents")
     @FormUrlEncoded
     fun takeEvents(@Field("userId") userId: String) : Call<List<EventsUpdated>>
+
+    @POST("deleteEvents")
+    @FormUrlEncoded
+    fun deleteEvents(@Field("eventId") eventId: String,
+                     @Field("userId") userId: String?,
+                     @Field("text") text: String,
+                     @Field("date") date: LocalDateTime) : Call<String>
 
 }
