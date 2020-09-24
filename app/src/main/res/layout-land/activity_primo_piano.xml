@@ -26,14 +26,14 @@
 
     <TextView
         android:id="@+id/text_piantina"
-        android:layout_width="118dp"
+        android:layout_width="218dp"
         android:layout_height="52dp"
         android:gravity="center_horizontal"
         android:text="@string/title_piantina"
         android:textColor="@color/colorPrimary"
         android:textSize="35sp"
         android:textStyle="bold"
-        app:fontFamily="@font/amatic_sc"
+        app:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

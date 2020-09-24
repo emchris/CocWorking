@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/text_eventi"
-        android:layout_width="81dp"
+        android:layout_width="181dp"
         android:layout_height="54dp"
         android:layout_marginTop="56dp"
         android:gravity="center_horizontal"
@@ -30,7 +30,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="37sp"
         android:textStyle="bold"
-        app:fontFamily="@font/amatic_sc"
+        app:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar_blue" />
