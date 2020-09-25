@@ -61,14 +61,15 @@ class LoginActivity: AppCompatActivity() {
 
             MaterialStyledDialog.Builder(this@LoginActivity)
                 .setIcon(R.drawable.ic_account)
-                .setTitle("Registration")
-                .setDescription("Please fill all fields")
+                //.setTitle("Registration")
+                .setTitle(getString(R.string.title_registration))
+                .setDescription(getString(R.string.registration_description))
                 .setCustomView(itemView)
-                .setNegativeText("Cancel")
+                .setNegativeText(getString(R.string.registration_cancel_BT))
                 .onNegative { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveText("REGISTER")
+                .setPositiveText(getString(R.string.registration_Reg_BT))
                 .onPositive(MaterialDialog.SingleButtonCallback{_, _ ->
                     val RegisterEmail = itemView.findViewById<View>(R.id.RegisterEmail) as EditText
                     val RegisterName = itemView.findViewById<View>(R.id.RegisterName) as EditText
