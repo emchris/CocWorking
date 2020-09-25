@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_white"
+        layout="@layout/toolbar_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="227dp"
+        android:layout_height="169dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@+id/ciao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:srcCompat="@mipmap/coco_logo" />
+
+    <ImageView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_white"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/name" />
+
+    <TextView
+        android:id="@+id/ciao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_chi_siamo"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorBase2"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        app:fontFamily="@font/montserrat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/chi_siamo"
+        android:layout_width="571dp"
+        android:layout_height="181dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:text="@string/chi_siamo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/contatti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ciao"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/contatti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_contatti"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/colorBase2"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        app:fontFamily="@font/montserrat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ciao"
+        app:layout_constraintVertical_bias="0.918" />
+
+    <TextView
+        android:id="@+id/web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:autoLink="web"
+        android:drawableStart="@drawable/icon_link_orange"
+        android:drawableLeft="@drawable/icon_link_orange"
+        android:gravity="center_horizontal"
+        android:text="@string/web"
+        android:textAlignment="center"
+        android:textColorLink="#BA000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/contatti"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:autoLink="phone"
+        android:drawableStart="@drawable/icon_phone_orange"
+        android:drawableLeft="@drawable/icon_phone_orange"
+        android:text="@string/telefono"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#BA000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/mobile"
+        app:layout_constraintStart_toStartOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:autoLink="phone"
+        android:drawableStart="@drawable/icon_phone_orange"
+        android:drawableLeft="@drawable/icon_phone_orange"
+        android:text="@string/cellulare"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#BA000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/address"
+        app:layout_constraintStart_toStartOf="@+id/phone" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:autoLink="map"
+        android:drawableStart="@drawable/icon_map_orange"
+        android:drawableLeft="@drawable/icon_map_orange"
+        android:text="@string/indirizzo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#BA000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/mobile" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:autoLink="email"
+        android:drawableStart="@drawable/icon_email_orange"
+        android:drawableLeft="@drawable/icon_email_orange"
+        android:text="@string/email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColorLink="#BA000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintStart_toStartOf="@+id/web" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

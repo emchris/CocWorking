@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ellissi_arancione"
+        android:layout_width="730dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/semelissi_arancione" />
+
+    <include
+        android:id="@+id/toolbar_orange"
+        layout="@layout/toolbar_orange" />
+
+    <TextView
+        android:id="@+id/text_convenzioni"
+        android:layout_width="262dp"
+        android:layout_height="53dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_vetrina"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/montserrat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
+
+    <ScrollView
+        android:layout_width="607dp"
+        android:layout_height="724dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ellissi_arancione">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Food"
+                    android:textColor="@color/colorBase2"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/cibo_1"
+                    app:layout_constraintStart_toStartOf="@+id/cibo_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/cibo_1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_cibo_1"
+                    app:layout_constraintStart_toStartOf="@+id/cibo_2"
+                    app:layout_constraintTop_toTopOf="@+id/text_cibo_1"
+                    app:srcCompat="@drawable/amicimiei" />
+
+                <TextView
+                    android:id="@+id/text_cibo_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Pizzeria Amici Miei"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/text_cibo_2"
+                    app:layout_constraintStart_toStartOf="@+id/text_cibo_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/cibo_2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_cibo_2"
+                    app:layout_constraintStart_toStartOf="@+id/cibo_3"
+                    app:layout_constraintTop_toTopOf="@+id/text_cibo_2"
+                    app:srcCompat="@drawable/zushi" />
+
+                <TextView
+                    android:id="@+id/text_cibo_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zushi Torino"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/text_cibo_3"
+                    app:layout_constraintStart_toStartOf="@+id/text_cibo_3"
+                    app:layout_constraintTop_toBottomOf="@+id/text_cibo_1" />
+
+                <ImageView
+                    android:id="@+id/cibo_3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginLeft="80dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_cibo_3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_cibo_3"
+                    app:srcCompat="@drawable/biobottega" />
+
+                <TextView
+                    android:id="@+id/text_cibo_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Bio Bottega"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cibo_3"
+                    app:layout_constraintTop_toBottomOf="@+id/text_cibo_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Sport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/sport_1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+
+                    android:layout_marginStart="80dp"
+                    android:layout_marginLeft="80dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_sport_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_sport_1"
+                    app:srcCompat="@drawable/athletic" />
+
+                <TextView
+                    android:id="@+id/text_sport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:text="Sport"
+                    android:textColor="@color/colorBase2"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/sport_1"
+                    app:layout_constraintStart_toStartOf="@+id/sport_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_sport_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="44dp"
+                    android:text="Athletic Center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sport_1" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Bambini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_bambino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Bambini"
+                    android:textColor="@color/colorBase2"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/bambino_1"
+                    app:layout_constraintStart_toStartOf="@+id/bambino_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/bambino_1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_bambino_2"
+                    app:layout_constraintStart_toStartOf="@+id/bambino_2"
+                    app:layout_constraintTop_toTopOf="@+id/text_bambino_2"
+                    app:srcCompat="@drawable/pollicino" />
+
+                <TextView
+                    android:id="@+id/text_bambino_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginLeft="26dp"
+                    android:text='Asilo "Nuovo Mondo"'
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bambino_2"
+                    app:layout_constraintTop_toBottomOf="@+id/text_bambino_2" />
+
+                <ImageView
+                    android:id="@+id/bambino_2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginLeft="80dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_bambino_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_bambino_1"
+                    app:srcCompat="@drawable/nuovomondo" />
+
+                <TextView
+                    android:id="@+id/text_bambino_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text='Asilo Nido "Il Pollicino"'
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/text_bambino_1"
+                    app:layout_constraintStart_toStartOf="@+id/text_bambino_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

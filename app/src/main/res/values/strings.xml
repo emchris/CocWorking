@@ -2,56 +2,61 @@
 <resources>
     <string name="app_name" translatable="false">Cocò Working</string>
     <string name="aboutus" translatable="false">Info</string>
-    <string name="about_piantina">In questa sezione potrai visionare i nostri uffici e controllare se ci sono ancora postazioni disponibili. Una volta selezionata avrai la possibilità di prenotarla e, se entro 3 giorni passerai in ufficio da noi, la postazione sarà tua.</string>
-    <string name="button_bacheca">Bacheca</string>
-    <string name="button_eventi">Eventi</string>
-    <string name="button_piantina">Piantina</string>
-    <string name="button_vetrina">Vetrina</string>
-    <string name="seleziona">Seleziona il piano da ispezionare:</string>
-    <string name="title_piantina">PIANTINA</string>
-    <string name="title_chi_siamo">CHI SIAMO</string>
-    <string name="chi_siamo">Ti offriamo spazi che non sono solo funzionali, ma anche belli da vivere, che riempiono le tue giornate lavorative con colori, forme e idee. Ambienti che facilitano scambio, condivisione, amicizia, in cui ci si può sentire come a casa, tutti personalizzati da Ugo Nespolo.</string>
-    <string name="title_contatti">CONTATTI</string>
+    <string name="about_piantina">In this section you can view our offices and check if there are still places available. Once selected you will have the opportunity to book it and, if within 3 days you will pass by the office, the station will be yours.</string>
+    <string name="button_bacheca">Board</string>
+    <string name="button_eventi">Events</string>
+    <string name="button_piantina">Plan</string>
+    <string name="button_vetrina">Showcase</string>
+    <string name="seleziona">Select the plant:</string>
+    <string name="title_piantina">PLAN</string>
+    <string name="title_chi_siamo">ABOUT US</string>
+    <string name="chi_siamo">We offer you spaces that are not only functional, but also beautiful to live in, that fill your working days with colors, shapes and ideas. Environments that facilitate exchange, sharing, friendship, through which one can feel a little like home. In addition, they are all personalized by Ugo Nespolo.</string>
+    <string name="title_contatti">CONTACTS</string>
     <string name="email" translatable="false">reception@cocoworking.it</string>
     <string name="telefono" translatable="false">0112458501</string>
     <string name="cellulare" translatable="false">3346170959</string>
     <string name="web" translatable="false">https://www.cocoworking.it/</string>
     <string name="indirizzo" translatable="false">Corso Galileo Ferraris, 22 bis, 10121 Torino TO</string>
-    <string name="title_primo_piano">PRIMO PIANO</string>
-    <string name="title_secondo_piano">SECONDO PIANO</string>
+    <string name="title_primo_piano">FIRST PLAN</string>
+    <string name="title_secondo_piano">SECOND PLAN</string>
     <string name="button_open_space" translatable="false">Open Space</string>
-    <string name="button_sala_grande">Sala Grande</string>
-    <string name="reception">Reception e Sala Relax</string>
-    <string name="button_sala_riunioni">Sala Riunioni</string>
-    <string name="button_mensa">Mensa</string>
-    <string name="button_ufficio_1">Ufficio 1</string>
-    <string name="button_ufficio_2">Ufficio 2</string>
-    <string name="button_ufficio_3">Ufficio 3</string>
-    <string name="button_ufficio_4">Ufficio 4</string>
-    <string name="libero">Sala libera</string>
-    <string name="occupato">Sala occupata</string>
-    <string name="title_profilo">PROFILO</string>
-    <string name="title_dati_e_info">Dati e Info</string>
-    <string name="title_professione">Professione</string>
-    <string name="title_collegamenti">Collegamenti</string>
-    <string name="title_interessi">Interessi</string>
-    <string name="title_sala_riunione">SALA RIUNIONE</string>
-    <string name="title_vetrina">VETRINA</string>
-    <string name="title_bacheca">BACHECA</string>
-    <string name="title_eventi">EVENTI</string>
+    <string name="button_sala_grande">Big Room</string>
+    <string name="reception">Reception and relax room</string>
+    <string name="button_sala_riunioni">Meeting Room</string>
+    <string name="button_mensa">Canteen</string>
+    <string name="button_ufficio_1">Office 1</string>
+    <string name="button_ufficio_2">Office 2</string>
+    <string name="button_ufficio_3">Office 3</string>
+    <string name="button_ufficio_4">Office 4</string>
+    <string name="libero">Free</string>
+    <string name="occupato">Busy</string>
+    <string name="title_profilo">PROFILE</string>
+    <string name="title_dati_e_info">About</string>
+    <string name="title_professione">Profession</string>
+    <string name="title_collegamenti">Links</string>
+    <string name="title_interessi">Interest</string>
+    <string name="title_sala_riunione">MEETING ROOM</string>
+    <string name="title_vetrina">SHOWCASE</string>
+    <string name="title_bacheca">BOARD</string>
+    <string name="title_eventi">EVENTS</string>
     <string name="button_login" translatable="false">Login</string>
-    <string name="button_crea_account">Crea profilo</string>
+    <string name="button_crea_account">Create account</string>
     <string name="title_email" translatable="false">Email</string>
     <string name="title_password" translatable="false">Password</string>
-    <string name="title_name">Nome</string>
+    <string name="title_name">Name</string>
     <string name="text_relax" translatable="false">Relax</string>
-    <string name="text_lavoro">Lavoro</string>
+    <string name="text_lavoro">Job</string>
     <string name="text_sport" translatable="false">Sport</string>
-    <string name="text_rispondi">Rispondi</string>
-    <string name="event_dialog_delete">Cancella questa riunione?</string>
-    <string name="delete">Cancella</string>
-    <string name="close">Chiudi</string>
-    <string name="event_input_dialog_title">Nome dell\'evento</string>
-    <string name="save">Salva</string>
-    <string name="empty_input_text">Testo vuoto</string>
+    <string name="text_rispondi">Comment</string>
+    <string name="event_dialog_delete">Delete this meeting?</string>
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
+    <string name="event_input_dialog_title">Enter event title</string>
+    <string name="save">Save</string>
+    <string name="empty_input_text">Text is empty</string>
+
+    <string name="title_registration" translatable="false">Registration</string>
+    <string name="registration_description">Please fill all fields</string>
+    <string name="registration_cancel_BT">Cancel</string>
+    <string name="registration_Reg_BT">REGISTER</string>
 </resources>
