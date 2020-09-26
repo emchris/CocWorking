@@ -55,8 +55,15 @@
     <string name="save">Save</string>
     <string name="empty_input_text">Text is empty</string>
 
-    <string name="title_registration" translatable="false">Registration</string>
+    <string name="title_registration">Registration</string>
     <string name="registration_description">Please fill all fields</string>
     <string name="registration_cancel_BT">Cancel</string>
     <string name="registration_Reg_BT">REGISTER</string>
+    <string name="title_setup">Settings</string>
+    <string name="setup_switch1">Sound</string>
+    <string name="setup_switch2">Notifications</string>
+    <string name="setup_setting">Account</string>
+    <string name="setup_setting2">Data and storage usage</string>
+    <string name="setup_setting3">Help</string>
+
 </resources>
