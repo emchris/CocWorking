@@ -9,9 +9,6 @@
     android:visibility="visible"
     tools:context=".PiantinaActivity">
 
-    <include
-        android:id="@+id/toolbar_orange"
-        layout="@layout/toolbar_orange" />
 
     <TextView
         android:id="@+id/text_info"
@@ -95,6 +92,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/semelissi_arancione" />
+
+    <include
+        android:id="@+id/toolbar_orange"
+        layout="@layout/toolbar_orange" />
 
     <TextView
         android:id="@+id/text_piantina"
