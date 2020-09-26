@@ -353,14 +353,10 @@
         android:layout_height="83dp"
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
         android:background="@drawable/icon_work"
         android:shadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/button_filter_sport"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="40dp" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
