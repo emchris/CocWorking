@@ -59,6 +59,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
     private var augurinonna = "augurinonna"
     private var augurizia = "augurizia"
     private var defaultUserId: String? = ""
+    private var defaultEmail: String? = ""
 
     //private var eventmap = mutableMapOf<LocalDate, List<Event>>()
 
@@ -192,6 +193,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
         val mypreference = MyPreference(this)
         defaultUserId = mypreference.getAccountInfo()
+        defaultEmail = mypreference.getPreferenceEmail()
 
         val binding = ActivitySalaRiunioniBinding.inflate(layoutInflater)
 
@@ -223,9 +225,13 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
+        takeEvents("ada")
+
         calendarView?.dayBinder = object : DayBinder<DayViewContainer> {
+
             override fun create(view: View) = DayViewContainer(view)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
+
                 container.day = day
                 val textView = container.textView
                 val dotView = container.dotView
@@ -249,7 +255,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                             textView.setTextColorRes(R.color.colorPrimaryDark)
                             textView.background = null
                             if(eventmap[day.date].orEmpty().isNotEmpty()) {
-                                dotView.makeInVisible()
+                                dotView.makeVisible()
                             }
                             else{dotView.makeInVisible()
                             }
@@ -273,7 +279,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             }
         }
 
-        takeEvents("ada")
+
         //eventi.toMutableList().add(evento)
         //eventi = eventi.orEmpty().plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurimamma, oggi))
         //eventi.plusElement(Event(UUID.randomUUID().toString(), defaultUserId, augurizia, domani))
@@ -337,6 +343,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
                 updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}
                 Log.d(eventi.size.toString(), "dimensione lista eventi")
+                eventi.forEach{calendarView?.notifyDateChanged(it.date.toLocalDate())}
                 eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
                 Log.d(eventmap.size.toString(), "dimensione mappa")
                 Log.d("ricevo questo", response.body().toString())
@@ -344,8 +351,8 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 //Log.d("ricevo questo", eventi?.get(1)?.toString())
 
                 //response.body()?.forEach { e ->  eventi.toMutableList().add(Event(e[0], e.userId, e.text, e.date))}
-                Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT)
-                    .show()
+                /*Toast.makeText(this@SalaRiunioniActivity, "" + response.body(), Toast.LENGTH_SHORT)
+                    .show()*/
             }
 
         })
@@ -400,6 +407,14 @@ class SalaRiunioniActivity : AppCompatActivity() {
             // uso "home" action per aprire MainActivity
             val home = Intent(applicationContext,MainActivity::class.java)
             startActivity(home)
+            true
+        }
+        R.id.logout -> {
+            // uso "home" action per aprire MainActivity
+            val mypreference = MyPreference(this)
+            mypreference.deleteAccountInfo(defaultUserId, defaultEmail)
+            val login = Intent(applicationContext,LoginActivity::class.java)
+            startActivity(login)
             true
         }
         else -> {

@@ -27,7 +27,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/esci"
+        android:id="@+id/logout"
         android:title="Esci"
         app:showAsAction="never" />
 
