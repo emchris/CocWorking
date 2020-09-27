@@ -147,7 +147,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             val date = event.date
             Log.d("mappa eventi", eventmap.toString())
             eventmap[date.toLocalDate()] = eventmap.getValue(date.toLocalDate()).orEmpty().minus(event)
-            deleteEvents(event.eventId,event.userId,event.text,event.date)
+            deleteEvents(event.eventId)
             updateAdapterForDate(date.toLocalDate())
         }
 
@@ -384,11 +384,11 @@ class SalaRiunioniActivity : AppCompatActivity() {
         })
     }
 
-    private fun deleteEvents(eventId: String, userId: String?, text: String, date:LocalDateTime) {
+    private fun deleteEvents(eventId: String) {
 
         Log.d("messaggio","sono entrato")
 
-        iMyService.deleteEvents(eventId , userId, text, date).enqueue(object :
+        iMyService.deleteEvents(eventId).enqueue(object :
             Callback<String> { //enqueue è un metodo che serve per lanciare la Call
             override fun onFailure(call: Call<String>, t: Throwable) {
                 //Log.d("ricevo questo", Array<Any>().toString())
