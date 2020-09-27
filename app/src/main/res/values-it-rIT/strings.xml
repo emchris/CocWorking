@@ -51,4 +51,6 @@
     <string name="setup_setting">Account</string>
     <string name="setup_setting3">Aiuto</string>
     <string name="setup_setting2">Utilizzo di memoria e dati</string>
+    <string name="toolbar_settings">Impostazioni</string>
+    <string name="toolbar_quit">Esci</string>
 </resources>

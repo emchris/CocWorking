@@ -10,7 +10,7 @@
 
         <item
             android:id="@+id/logout"
-            android:title="Esci"
+            android:title="@string/toolbar_quit"
             app:showAsAction="never" />
 
 </menu>
