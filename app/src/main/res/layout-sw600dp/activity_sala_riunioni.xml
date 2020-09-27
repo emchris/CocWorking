@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
 
-   <com.kizitonwose.calendarview.CalendarView
+    <com.kizitonwose.calendarview.CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,34 +60,51 @@
         app:cv_monthHeaderResource="@layout/calendar_header"
         app:cv_orientation="horizontal"
         app:cv_scrollMode="paged"
-        app:layout_constraintBottom_toTopOf="@+id/selectedDateText"
-        app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano" />
-
-    <TextView
-        android:id="@+id/selectedDateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#EEEEEE"
-        android:fontFamily="sans-serif-medium"
-        android:paddingStart="20dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="12dp"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
-        tools:text="7 Jan, 2019"
-        app:layout_constraintBottom_toTopOf="@id/eventsRv"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/eventsRv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <ScrollView
+        android:layout_width="599dp"
+        android:layout_height="179dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/selectedDateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#EEEEEE"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="20dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="12dp"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                tools:text="7 Jan, 2019" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddButton"
