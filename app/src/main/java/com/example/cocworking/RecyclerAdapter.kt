@@ -32,10 +32,10 @@ class RecyclerAdapter (private var titles: List<String>, private var details: Li
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return titles.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.itemTitle.text = titles[position]
     }
 }

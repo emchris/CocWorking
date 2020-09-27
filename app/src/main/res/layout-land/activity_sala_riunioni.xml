@@ -68,33 +68,11 @@
         app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ScrollView
-        android:id="@+id/scrollView5"
-        android:layout_width="324dp"
-        android:layout_height="191dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/calendarView"
-        app:layout_constraintTop_toTopOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/eventsRv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
-        </LinearLayout>
-    </ScrollView>
-
     <TextView
         android:id="@+id/selectedDateText"
         android:layout_width="324dp"
         android:layout_height="44dp"
+        android:layout_marginTop="8dp"
         android:background="#EEEEEE"
         android:fontFamily="sans-serif-medium"
         android:paddingStart="20dp"
@@ -104,13 +82,39 @@
         android:textAllCaps="true"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView5"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView5"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/scrollView5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toEndOf="@+id/calendarView"
         app:layout_constraintTop_toTopOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.089"
         tools:text="7 Jan, 2019" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="321dp"
+        android:layout_height="166dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/selectedDateText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/selectedDateText"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsRv"
+                android:layout_width="match_parent"
+                android:layout_height="341dp"
+                android:nestedScrollingEnabled="true" />
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddButton"

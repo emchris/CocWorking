@@ -102,9 +102,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsRv"
-                android:layout_width="match_parent"
+                android:layout_width="334dp"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="true" />
         </LinearLayout>
     </ScrollView>
 

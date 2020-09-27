@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:autofillHints=""
@@ -32,7 +33,6 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorSecondaryDark"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.399"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +42,7 @@
         android:id="@+id/RegisterEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginTop="24dp"
         android:drawableEnd="@drawable/ic_email"
         android:drawableRight="@drawable/ic_email"
         android:ems="10"
@@ -55,20 +52,17 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorSecondaryDark"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/RegisterName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="294dp" />
+        app:layout_constraintStart_toStartOf="@+id/RegisterName"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterName" />
 
     <EditText
         android:id="@+id/RegisterPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="404dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
         android:cursorVisible="false"
         android:drawableEnd="@drawable/ic_lock"
         android:drawableRight="@drawable/ic_lock"
@@ -78,8 +72,10 @@
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorSecondaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/RegisterEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/RegisterEmail"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterEmail"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
