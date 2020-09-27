@@ -26,4 +26,10 @@ class MyPreference(context : Context) {
         return SharedPreferences.getString(PREFERENCE_EMAIL, "")
     }
 
+    fun deleteAccountInfo(name : String?, email : String?){
+        val editor = SharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+    }
+
 }

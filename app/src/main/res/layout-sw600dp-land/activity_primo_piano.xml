@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/piantina"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context=".PiantinaActivity">
+
+
+    <ImageView
+        android:id="@+id/cerchio_occupato"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/occupata"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_secondo_piano"
+        app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cerchio_occupato" />
+
+    <ImageView
+        android:id="@+id/ellissi_arancione"
+        android:layout_width="730dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/semelissi_arancione" />
+
+    <include
+        android:id="@+id/toolbar_orange"
+        layout="@layout/toolbar_orange" />
+
+    <TextView
+        android:id="@+id/text_secondo_piano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_primo_piano"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_piantina" />
+
+    <TextView
+        android:id="@+id/text_piantina"
+        android:layout_width="218dp"
+        android:layout_height="52dp"
+        android:gravity="center_horizontal"
+        android:text="@string/title_piantina"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/montserrat"
+        app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_orange" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_reception"
+        android:layout_width="223dp"
+        android:layout_height="107dp"
+        android:background="#CCF2F2F2"
+        android:gravity="center"
+        android:text="@string/reception"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_ufficio3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_sala_riunioni"
+        app:layout_constraintTop_toTopOf="@+id/button_sala_riunioni"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_open_space"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="197dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="380dp"
+        android:layout_marginLeft="380dp"
+        android:background="@color/libero"
+        android:gravity="center"
+        android:text="@string/button_open_space"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_sala_riunioni"
+        app:layout_constraintEnd_toStartOf="@+id/button_sala_grande"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ellissi_arancione"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_sala_grande"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="266dp"
+        android:layout_height="96dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:background="@color/occupato"
+        android:gravity="center"
+        android:text="@string/button_sala_grande"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_ufficio3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_open_space"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_ufficio3"
+        android:layout_width="127dp"
+        android:layout_height="85dp"
+        android:background="@color/libero"
+        android:text="@string/button_ufficio_1"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_ufficio4"
+        app:layout_constraintEnd_toEndOf="@+id/button_sala_grande"
+        app:layout_constraintTop_toTopOf="@+id/button_sala_riunioni" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_ufficio4"
+        android:layout_width="127dp"
+        android:layout_height="129dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/libero"
+        android:includeFontPadding="false"
+        android:text="@string/button_ufficio_2"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_ufficio3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_sala_riunioni" />
+
+    <TextView
+        android:id="@+id/occupata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:text="@string/occupato"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cerchio_occupato"
+        app:layout_constraintEnd_toStartOf="@+id/button_sala_riunioni"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cerchio_occupato"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@id/button_sala_riunioni"
+        android:layout_width="115dp"
+        android:layout_height="196dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/occupato"
+        android:gravity="center"
+        android:text="@string/button_sala_riunioni"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_open_space" />
+
+    <TextView
+        android:id="@+id/libera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/libero"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cerchio_libero"
+        app:layout_constraintEnd_toEndOf="@+id/occupata"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cerchio_libero"
+        app:layout_constraintTop_toTopOf="@+id/cerchio_libero"
+        app:layout_constraintVertical_bias="0.952" />
+
+    <ImageView
+        android:id="@+id/cerchio_libero"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cerchio_occupato"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cerchio_occupato"
+        app:layout_constraintTop_toBottomOf="@+id/cerchio_occupato"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cerchio_libero" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

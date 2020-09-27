@@ -9,8 +9,8 @@
             app:showAsAction="always"/>
 
         <item
-            android:id="@+id/esci"
-            android:title="Esci"
+            android:id="@+id/logout"
+            android:title="@string/toolbar_quit"
             app:showAsAction="never" />
 
 </menu>

@@ -16,18 +16,20 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="227dp"
-        android:layout_height="169dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
+        android:layout_width="246dp"
+        android:layout_height="192dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/ciao"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/coco_logo" />
 
     <ImageView
@@ -45,9 +47,8 @@
 
     <TextView
         android:id="@+id/ciao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="505dp"
+        android:layout_height="0dp"
         android:gravity="center_horizontal"
         android:text="@string/title_chi_siamo"
         android:textAlignment="center"
@@ -57,9 +58,9 @@
         android:textStyle="normal"
         app:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/chi_siamo"
@@ -74,15 +75,17 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/contatti"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciao"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="NotSibling" />
 
     <TextView
         android:id="@+id/contatti"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center_horizontal"
         android:text="@string/title_contatti"
         android:textAlignment="center"
@@ -96,7 +99,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciao"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <TextView
         android:id="@+id/web"
@@ -114,7 +117,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/contatti"
         app:layout_constraintVertical_bias="1.0" />
@@ -123,7 +126,9 @@
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginBottom="88dp"
         android:autoLink="phone"
         android:drawableStart="@drawable/icon_phone_orange"
         android:drawableLeft="@drawable/icon_phone_orange"
@@ -131,14 +136,14 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#BA000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/mobile"
-        app:layout_constraintStart_toStartOf="@+id/email" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/web" />
 
     <TextView
         android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="88dp"
         android:autoLink="phone"
         android:drawableStart="@drawable/icon_phone_orange"
         android:drawableLeft="@drawable/icon_phone_orange"
@@ -146,8 +151,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#BA000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/address"
-        app:layout_constraintStart_toStartOf="@+id/phone" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/contatti"
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toEndOf="@+id/phone" />
 
     <TextView
         android:id="@+id/address"
@@ -162,13 +169,14 @@
         android:textColor="#BA000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/mobile" />
+        app:layout_constraintEnd_toEndOf="@+id/mobile"
+        app:layout_constraintStart_toEndOf="@+id/email" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:autoLink="email"
         android:drawableStart="@drawable/icon_email_orange"
         android:drawableLeft="@drawable/icon_email_orange"
@@ -176,7 +184,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColorLink="#BA000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/web" />
 
 

@@ -5,20 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar_blue"
-        layout="@layout/toolbar_blue" />
 
     <ImageView
         android:id="@+id/ellissi_azzurra"
-        android:layout_width="460dp"
-        android:layout_height="135dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="730dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/semelissi_azzurra" />
+
+    <include
+        android:id="@+id/toolbar_blue"
+        layout="@layout/toolbar_blue" />
 
     <TextView
         android:id="@+id/text_bacheca"
@@ -29,6 +30,7 @@
         android:text="@string/title_bacheca"
         android:textColor="@color/colorPrimary"
         android:textSize="37sp"
+        android:textStyle="bold"
         app:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -37,11 +39,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_add"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginRight="224dp"
         android:background="@drawable/icon_add"
         android:shadowColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +53,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_search"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="760dp"
+        android:layout_marginLeft="760dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/icon_search"
         android:shadowColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,79 +65,38 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_filter_Relax"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
+        android:layout_width="85dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="142dp"
         android:layout_marginRight="142dp"
         android:background="@drawable/icon_relax"
         android:shadowColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/button_filter_sport"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button_filter_sport"
-        app:layout_constraintTop_toTopOf="@+id/button_filter_sport"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/text_button_relax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_relax"
-        app:layout_constraintEnd_toEndOf="@+id/button_filter_Relax"
-        app:layout_constraintStart_toStartOf="@+id/button_filter_Relax"
-        app:layout_constraintTop_toBottomOf="@+id/button_filter_Relax" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_filter_work"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
-        android:background="@drawable/icon_work"
-        android:shadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/button_filter_sport"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ellissi_azzurra" />
-
-    <TextView
-        android:id="@+id/text_button_work"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_lavoro"
-        app:layout_constraintEnd_toEndOf="@+id/button_filter_work"
-        app:layout_constraintStart_toStartOf="@+id/button_filter_work"
-        app:layout_constraintTop_toBottomOf="@+id/button_filter_work" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_filter_sport"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginRight="27dp"
+        android:layout_width="85dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/icon_sport"
         android:shadowColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/button_filter_work"
-        app:layout_constraintEnd_toStartOf="@+id/button_filter_Relax"
         app:layout_constraintStart_toEndOf="@+id/button_filter_work"
-        app:layout_constraintTop_toTopOf="@+id/button_filter_work"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/text_button_sport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_sport"
-        app:layout_constraintEnd_toEndOf="@+id/button_filter_sport"
-        app:layout_constraintStart_toStartOf="@+id/button_filter_sport"
-        app:layout_constraintTop_toBottomOf="@+id/button_filter_sport" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
 
     <ScrollView
-        android:layout_width="406dp"
-        android:layout_height="361dp"
+        android:layout_width="734dp"
+        android:layout_height="278dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="1dp"
@@ -153,6 +114,21 @@
                 android:id="@+id/Post3"
                 android:layout_width="match_parent"
                 android:layout_height="186dp">
+
+                <TextView
+                    android:id="@+id/text_message3"
+                    android:layout_width="306dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="11dp"
+                    android:layout_marginRight="11dp"
+                    android:text="Oggi faremo dei colloqui quindi ci saranno un po' di persone nel corridoio. Ci scusiamo per il disagio."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.082"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_profile3" />
 
                 <ImageView
                     android:id="@+id/image_profile3"
@@ -179,20 +155,6 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/image_profile3"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/text_message3"
-                    android:layout_width="306dp"
-                    android:layout_height="56dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="11dp"
-                    android:layout_marginRight="11dp"
-                    android:text="Oggi faremo dei colloqui quindi ci saranno un po' di persone nel corridoio. Ci scusiamo per il disagio."
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_profile3" />
 
                 <Button
                     android:id="@+id/button_rispondi3"
@@ -391,7 +353,16 @@
         </LinearLayout>
     </ScrollView>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_work"
+        android:layout_width="85dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:background="@drawable/icon_work"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_blue" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 

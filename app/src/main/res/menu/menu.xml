@@ -23,12 +23,12 @@
 
     <item
         android:id="@+id/setting"
-        android:title="Impostazioni"
+        android:title="@string/toolbar_settings"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/esci"
-        android:title="Esci"
+        android:id="@+id/logout"
+        android:title="@string/toolbar_quit"
         app:showAsAction="never" />
 
 
