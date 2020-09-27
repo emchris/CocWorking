@@ -47,7 +47,6 @@
         android:text="@string/title_piantina"
         android:textColor="@color/colorPrimary"
         android:textSize="40sp"
-        android:textStyle="bold"
         app:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
         app:layout_constraintEnd_toEndOf="parent"

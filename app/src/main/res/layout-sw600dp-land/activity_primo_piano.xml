@@ -56,13 +56,12 @@
 
     <TextView
         android:id="@+id/text_piantina"
-        android:layout_width="218dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/title_piantina"
         android:textColor="@color/colorPrimary"
         android:textSize="40sp"
-        android:textStyle="bold"
         app:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toTopOf="@+id/text_secondo_piano"
         app:layout_constraintEnd_toEndOf="parent"
