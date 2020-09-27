@@ -22,14 +22,13 @@
 
     <TextView
         android:id="@+id/text_eventi"
-        android:layout_width="181dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:gravity="center_horizontal"
         android:text="@string/title_eventi"
         android:textColor="@color/colorPrimary"
         android:textSize="37sp"
-        android:textStyle="bold"
         app:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
