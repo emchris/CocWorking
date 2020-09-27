@@ -45,4 +45,12 @@
     <string name="registration_description">Please fill all fields</string>
     <string name="registration_cancel_BT">Cancel</string>
     <string name="registration_Reg_BT">REGISTER</string>
+    <string name="title_setup">Settings</string>
+    <string name="setup_switch1">Sound</string>
+    <string name="setup_switch2">Notifications</string>
+    <string name="setup_setting">Account</string>
+    <string name="setup_setting3">Help</string>
+    <string name="setup_setting2">Data and storage usage</string>
+    <string name="toolbar_settings">Settings</string>
+    <string name="toolbar_quit">Log out</string>
 </resources>
