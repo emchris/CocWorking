@@ -20,10 +20,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cocworking.Retrofit.EventsUpdated
-import com.example.cocworking.Retrofit.IMyService
-import com.example.cocworking.Retrofit.RetrofitClient
-import com.example.cocworking.Retrofit.RetrofitClient2
+import com.example.cocworking.Retrofit.*
 import com.example.cocworking.databinding.ActivitySalaRiunioniBinding
 import com.example.cocworking.databinding.CalendarDayLayoutBinding
 import com.example.cocworking.models.Event
@@ -144,6 +141,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 }
             }
         }
+
 
         private fun deleteEvent(event: Event) {
             val date = event.date
@@ -294,9 +292,13 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 cal.set(Calendar.HOUR_OF_DAY,hour)
                 cal.set(Calendar.MINUTE, minute)
                 eventTime = LocalDateTime.ofInstant(cal.toInstant(), cal.timeZone.toZoneId()).toLocalTime()
-                inputDialog.show()
+                var chosenDate = LocalDateTime.of(selectedDate,eventTime.truncatedTo(ChronoUnit.MINUTES))
+                Log.d("chosen date", chosenDate.toString())
+                checkFreeDate(chosenDate)
+
             }
             TimePickerDialog(this, R.style.Theme_MaterialComponents_Dialog,timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+
         }
 
         val currentMonth = YearMonth.now()
@@ -326,6 +328,29 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
     }
 
+    private fun checkFreeDate(date:LocalDateTime) {
+
+        Log.d("passed date", date.toString())
+
+        iMyService.checkFreeDate(date).enqueue(object :
+            Callback<DataChecked> { //enqueue è un metodo che serve per lanciare la Call
+            override fun onFailure(call: Call<DataChecked>, t: Throwable) {
+                //Log.d("ricevo questo", Array<Any>().toString())
+                Toast.makeText(this@SalaRiunioniActivity, "Error" , Toast.LENGTH_SHORT).show() //mostra un messaggio nel contesto della LoginActivity
+            }
+
+            override fun onResponse(call: Call<DataChecked>, response: Response<DataChecked>) {
+                //Log.d("ricevo questo", response.body()?.get(1).toString())
+                Toast.makeText(this@SalaRiunioniActivity, "" + response.body()?.message, Toast.LENGTH_SHORT).show()
+                if(response.body()?.flag == 1 ){
+                    inputDialog.show()
+                }
+            }
+
+        })
+
+    }
+
     private fun takeEvents(userId: String) {
 
         RetrofitClient2.instance.takeEvents(userId).enqueue(object :
@@ -340,8 +365,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<EventsUpdated>>, response: Response<List<EventsUpdated>>) {
                 val updated = response.body()
                // updated?.forEach( {e => eventi.orEmpty().plusElement(Event(e.eventId, e.userId, e.text, e.date.toLocalDateTime))})
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
-                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}
+                /*val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}*/
+                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text,  LocalDateTime.parse(it.date, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX")))}
                 Log.d(eventi.size.toString(), "dimensione lista eventi")
                 eventi.forEach{calendarView?.notifyDateChanged(it.date.toLocalDate())}
                 eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
