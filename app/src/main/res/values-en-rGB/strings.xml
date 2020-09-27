@@ -53,4 +53,15 @@
     <string name="setup_setting2">Data and storage usage</string>
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_quit">Log out</string>
+    <string name="notifiche_emailNotValid">Invalid email</string>
+    <string name="notifiche_existingEmail">Email already used</string>
+    <string name="notifiche_emailNotExist">Email not exist</string>
+    <string name="notifiche_wrongPsw">Wrong Password</string>
+    <string name="notifiche_pswNotValid">Invalid Password</string>
+    <string name="notifiche_userNotAvailable">Username not available</string>
+    <string name="notifiche_loginSuccess">Login success</string>
+    <string name="notifiche_registrationOk">Registration completed</string>
+    <string name="notifiche_orarioBusy">Busy time</string>
+    <string name="notifiche_orarioFree">Time available</string>
+    <string name="notifiche_meetingSaved">Saved Meeting</string>
 </resources>
