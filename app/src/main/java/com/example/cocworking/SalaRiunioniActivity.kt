@@ -51,7 +51,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
 
     lateinit var iMyService : IMyService
     private val today = LocalDate.now()
-    private var selectedDate: LocalDate? = null
+    private var selectedDate: LocalDate = LocalDate.now()
     private var augurimamma = "auguri mamma"
     private var augurinonna = "augurinonna"
     private var augurizia = "augurizia"
@@ -134,9 +134,9 @@ class SalaRiunioniActivity : AppCompatActivity() {
             } else {
                 selectedDate?.let {
                     Log.d("time", time.toString())
-
-                    eventmap[it] = eventmap[it].orEmpty().plus(Event(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES))))
-                    updateEvents(UUID.randomUUID().toString(), defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES)))
+                    var idEvento = UUID.randomUUID().toString()
+                    eventmap[it] = eventmap[it].orEmpty().plus(Event(idEvento, defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES))))
+                    updateEvents(idEvento, defaultUserId, text, LocalDateTime.of(it,time.truncatedTo(ChronoUnit.MINUTES)))
                     updateAdapterForDate(it)
                 }
             }
@@ -146,6 +146,10 @@ class SalaRiunioniActivity : AppCompatActivity() {
         private fun deleteEvent(event: Event) {
             val date = event.date
             Log.d("mappa eventi", eventmap.toString())
+            Log.d("evento incriminato", event.eventId)
+            Log.d("evento incriminato", event.userId)
+            Log.d("evento incriminato", event.text)
+            Log.d("evento incriminato", event.date.toString())
             eventmap[date.toLocalDate()] = eventmap.getValue(date.toLocalDate()).orEmpty().minus(event)
             deleteEvents(event.eventId)
             updateAdapterForDate(date.toLocalDate())
@@ -170,6 +174,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 selectedDate = date
                 oldDate?.let { calendarView?.notifyDateChanged(it) }
                 calendarView?.notifyDateChanged(date)
+                calendarView?.notifyDateChanged(oldDate)
                 updateAdapterForDate(date)
             }
     }
