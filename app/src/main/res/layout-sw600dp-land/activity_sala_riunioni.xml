@@ -55,20 +55,22 @@
 
     <com.kizitonwose.calendarview.CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="787dp"
+        android:layout_height="0dp"
         app:cv_dayViewResource="@layout/calendar_day_layout"
         app:cv_monthHeaderResource="@layout/calendar_header"
         app:cv_orientation="horizontal"
         app:cv_scrollMode="paged"
         app:layout_constraintBottom_toTopOf="@+id/selectedDateText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano" />
 
     <TextView
         android:id="@+id/selectedDateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:background="#EEEEEE"
         android:fontFamily="sans-serif-medium"
         android:paddingStart="20dp"
@@ -78,17 +80,25 @@
         android:textAllCaps="true"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
-        tools:text="7 Jan, 2019"
-        app:layout_constraintBottom_toTopOf="@id/eventsRv"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintBottom_toTopOf="@+id/AddButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_secondo_piano"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="7 Jan, 2019" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventsRv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="616dp"
+        android:layout_height="154dp"
+        android:layout_marginBottom="76dp"
         android:nestedScrollingEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDateText"
+        app:layout_constraintVertical_bias="0.964" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/AddButton"
