@@ -14,15 +14,17 @@ import kotlinx.android.synthetic.main.activity_profilo.*
 
 class MainActivity : AppCompatActivity() {
 
-
+    private var defaultUserId: String? = ""
+    private var defaultEmail: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_white))
 
-
-
+        val mypreference = MyPreference(this)
+        defaultUserId = mypreference.getAccountInfo()
+        defaultEmail = mypreference.getPreferenceEmail()
 
         var informazioni = intent.extras
         if(null != informazioni?.getString("name") && null != informazioni?.getString("email") ) {
@@ -108,6 +110,14 @@ class MainActivity : AppCompatActivity() {
             // User chose the "Allarm" action for see notifications
             val notifiche = Intent(applicationContext,NotificheActivity::class.java)
             startActivity(notifiche)
+            true
+        }
+        R.id.logout -> {
+            // uso "home" action per aprire MainActivity
+            val mypreference = MyPreference(this)
+            mypreference.deleteAccountInfo(defaultUserId, defaultEmail)
+            val login = Intent(applicationContext,LoginActivity::class.java)
+            startActivity(login)
             true
         }
 

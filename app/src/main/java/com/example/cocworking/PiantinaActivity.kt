@@ -11,8 +11,16 @@ import kotlinx.android.synthetic.main.activity_piantina.*
 
 class PiantinaActivity: AppCompatActivity() {
 
+    private var defaultUserId: String? = ""
+    private var defaultEmail: String? = ""
+
         @RequiresApi(Build.VERSION_CODES.M)
         override fun onCreate(savedInstanceState: Bundle?) {
+
+            val mypreference = MyPreference(this)
+            defaultUserId = mypreference.getAccountInfo()
+            defaultEmail = mypreference.getPreferenceEmail()
+
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_piantina)
             setSupportActionBar(findViewById(R.id.toolbar_orange))
@@ -59,6 +67,14 @@ class PiantinaActivity: AppCompatActivity() {
                 // uso "home" action per aprire MainActivity
                 val home = Intent(applicationContext,MainActivity::class.java)
                 startActivity(home)
+                true
+            }
+            R.id.logout -> {
+                // uso "home" action per aprire MainActivity
+                val mypreference = MyPreference(this)
+                mypreference.deleteAccountInfo(defaultUserId, defaultEmail)
+                val login = Intent(applicationContext,LoginActivity::class.java)
+                startActivity(login)
                 true
             }
             else -> {

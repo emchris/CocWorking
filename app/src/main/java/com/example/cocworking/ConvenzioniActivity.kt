@@ -11,11 +11,18 @@ import kotlinx.android.synthetic.main.activity_convenzioni.*
 
 class ConvenzioniActivity: AppCompatActivity() {
 
+    private var defaultUserId: String? = ""
+    private var defaultEmail: String? = ""
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_convenzioni)
         setSupportActionBar(findViewById(R.id.toolbar_orange))
+
+        val mypreference = MyPreference(this)
+        defaultUserId = mypreference.getAccountInfo()
+        defaultEmail = mypreference.getPreferenceEmail()
     }
 
     public override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,6 +54,14 @@ class ConvenzioniActivity: AppCompatActivity() {
             // uso "home" action per aprire MainActivity
             val home = Intent(applicationContext,MainActivity::class.java)
             startActivity(home)
+            true
+        }
+        R.id.logout -> {
+            // uso "home" action per aprire MainActivity
+            val mypreference = MyPreference(this)
+            mypreference.deleteAccountInfo(defaultUserId, defaultEmail)
+            val login = Intent(applicationContext,LoginActivity::class.java)
+            startActivity(login)
             true
         }
         else -> {

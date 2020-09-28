@@ -10,8 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 
 class NotificheActivity: AppCompatActivity() {
 
+    private var defaultUserId: String? = ""
+    private var defaultEmail: String? = ""
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val mypreference = MyPreference(this)
+        defaultUserId = mypreference.getAccountInfo()
+        defaultEmail = mypreference.getPreferenceEmail()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notifiche)
         setSupportActionBar(findViewById(R.id.toolbar_white))
@@ -35,6 +43,14 @@ class NotificheActivity: AppCompatActivity() {
             // User chose the "Settings" item, show the app settings UI...
             val setting = Intent(applicationContext,SetupActivity::class.java)
             startActivity(setting)
+            true
+        }
+        R.id.logout -> {
+            // uso "home" action per aprire MainActivity
+            val mypreference = MyPreference(this)
+            mypreference.deleteAccountInfo(defaultUserId, defaultEmail)
+            val login = Intent(applicationContext,LoginActivity::class.java)
+            startActivity(login)
             true
         }
         else -> {
