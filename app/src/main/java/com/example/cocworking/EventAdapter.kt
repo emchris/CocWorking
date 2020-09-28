@@ -57,7 +57,8 @@ class EventAdapter(val onClick: (Event) -> Unit) :
 
         fun bind(event: Event) {
             itemEventText.setText(event.text)
-            itemEventTime.setText(event.date.hour.toString()+":"+event.date.minute.toString())
+            //itemEventTime.setText(event.date.hour.toString()+":"+event.date.minute.toString())
+            itemEventTime.setText(event.date.toLocalTime().toString())
         }
     }
 }
