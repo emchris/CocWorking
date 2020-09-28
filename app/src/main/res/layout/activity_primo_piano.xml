@@ -114,7 +114,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="132dp"
-        android:background="@color/occupato"
+        android:background="@color/libero"
         android:gravity="center"
         android:text="@string/button_sala_riunioni"
         android:textAllCaps="false"
@@ -122,7 +122,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_reception"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_open_space"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_open_space" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ufficio3"

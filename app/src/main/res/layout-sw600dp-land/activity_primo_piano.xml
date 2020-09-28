@@ -172,7 +172,7 @@
         android:layout_width="115dp"
         android:layout_height="196dp"
         android:layout_marginBottom="56dp"
-        android:background="@color/occupato"
+        android:background="@color/libero"
         android:gravity="center"
         android:text="@string/button_sala_riunioni"
         android:textAllCaps="false"
