@@ -61,13 +61,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
-        android:layout_marginBottom="37dp"
         android:ems="10"
         android:gravity="center"
         android:text="Nome Cognome"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/title_dati_e_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,46 +75,99 @@
         android:id="@+id/title_dati_e_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/title_dati_e_info"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/info_utente"
-        app:layout_constraintStart_toStartOf="@+id/info_utente" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome_cognome" />
 
     <TextView
         android:id="@+id/title_professione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:text="@string/title_professione"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/professione_utente"
+        app:layout_constraintStart_toStartOf="@+id/info_utente"
         app:layout_constraintTop_toBottomOf="@+id/info_utente" />
-
-    <TextView
-        android:id="@+id/professione_utente"
-        android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:layout_marginBottom="167dp"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_professione" />
 
     <TextView
         android:id="@+id/info_utente"
         android:layout_width="325dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/title_dati_e_info"
+        app:layout_constraintTop_toBottomOf="@+id/title_dati_e_info" />
+
+    <TextView
+        android:id="@+id/title_interessi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/profile_interessi"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/professione_utente"
+        app:layout_constraintTop_toBottomOf="@+id/professione_utente" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/icon_sport"
+        android:shadowColor="@color/colorPrimary"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/title_interessi"
+        app:layout_constraintTop_toBottomOf="@+id/title_interessi" />
+
+    <TextView
+        android:id="@+id/text_button_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_sport"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/button_filter_sport"
+        app:layout_constraintStart_toStartOf="@+id/button_filter_sport"
+        app:layout_constraintTop_toBottomOf="@+id/button_filter_sport" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_filter_Relax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/icon_relax"
+        android:shadowColor="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/button_filter_sport"
+        app:layout_constraintTop_toBottomOf="@+id/title_interessi" />
+
+    <TextView
+        android:id="@+id/text_button_relax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_relax"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/button_filter_Relax"
+        app:layout_constraintStart_toStartOf="@+id/button_filter_Relax"
+        app:layout_constraintTop_toBottomOf="@+id/button_filter_Relax" />
+
+    <TextView
+        android:id="@+id/professione_utente"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/profile_profession"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/title_professione"
-        app:layout_constraintTop_toBottomOf="@+id/title_dati_e_info" />
+        app:layout_constraintTop_toBottomOf="@+id/title_professione" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

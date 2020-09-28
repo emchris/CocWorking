@@ -64,4 +64,6 @@
     <string name="notifiche_orarioBusy">Orario occupato</string>
     <string name="notifiche_orarioFree">Orario disponibile</string>
     <string name="notifiche_meetingSaved">Riunione salvata</string>
+    <string name="profile_interessi">Interessi</string>
+    <string name="profile_profession">Architetto, interior designer</string>
 </resources>

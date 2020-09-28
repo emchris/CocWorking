@@ -68,6 +68,10 @@
     <string name="toolbar_settings">Settings</string>
     <string name="toolbar_quit">Log out</string>
 
+    <!--stringhe del profilo-->
+    <string name="profile_profession">Architect, interior designer</string>
+    <string name="profile_interessi">Interests</string>
+
     <!--stringhe dei messaggi/notifiche-->
     <string name="notifiche_emailNotValid">Invalid email</string>
     <string name="notifiche_existingEmail">Email already used</string>

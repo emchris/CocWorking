@@ -45,7 +45,7 @@
         android:layout_marginStart="212dp"
         android:layout_marginLeft="212dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/occupato"
+        android:background="@color/libero"
         android:gravity="center"
         android:text="@string/button_sala_riunioni"
         android:textAllCaps="false"
