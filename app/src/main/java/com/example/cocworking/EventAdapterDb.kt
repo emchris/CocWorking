@@ -9,8 +9,8 @@ import com.example.cocworking.databinding.EventItemViewBinding
 import com.example.cocworking.models.Event
 import kotlinx.android.synthetic.main.event_item_view.view.*
 
-class EventAdapter(val onClick: (Event) -> Unit) :
-    RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapterDb(val onClick: (Event) -> Unit) :
+    RecyclerView.Adapter<EventAdapterDb.EventViewHolder>() {
 
     val events = mutableListOf<Event>()
 
@@ -58,7 +58,7 @@ class EventAdapter(val onClick: (Event) -> Unit) :
         fun bind(event: Event) {
             itemEventText.setText(event.text)
             //itemEventTime.setText(event.date.hour.toString()+":"+event.date.minute.toString())
-            itemEventTime.setText(event.date.toLocalTime().toString())
+            itemEventTime.setText(event.date.plusHours(2).toLocalTime().toString())
         }
     }
 }

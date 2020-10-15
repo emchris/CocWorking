@@ -84,7 +84,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                 if(it.userId == defaultUserId) {
                     deleteEvent(it)
                 } else {
-                    Toast.makeText(this@SalaRiunioniActivity, "Impossibile eliminare evento" + it.userId + defaultUserId , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SalaRiunioniActivity, "Non hai i dirito di eliminare questo evento", Toast.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton(R.string.close, null)
@@ -210,6 +210,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
             calendarView?.post {
                 // Show today's events initially.
                 selectDate(today)
+                updateAdapterForDate(today)
             }
         }
 
@@ -373,7 +374,7 @@ class SalaRiunioniActivity : AppCompatActivity() {
                // updated?.forEach( {e => eventi.orEmpty().plusElement(Event(e.eventId, e.userId, e.text, e.date.toLocalDateTime))})
                 /*val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
                 updated?.forEach{eventi += Event(it.eventId, it.userId, it.text, LocalDateTime.parse(it.date, formatter))}*/
-                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text,  LocalDateTime.parse(it.date, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX")))}
+                updated?.forEach{eventi += Event(it.eventId, it.userId, it.text,  LocalDateTime.parse(it.date, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX")).plusHours(2))}
                 Log.d(eventi.size.toString(), "dimensione lista eventi")
                 eventi.forEach{calendarView?.notifyDateChanged(it.date.toLocalDate())}
                 eventmap = eventi.groupBy { it.date.toLocalDate() }.toMutableMap()
